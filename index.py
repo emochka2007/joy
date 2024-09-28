@@ -1,5 +1,6 @@
 import re
 import operations
+import files
 func_map = {}
 def polish_notation(m):
     """polish notation"""
@@ -81,10 +82,4 @@ def to_power(a, n):
     if n == 0:
         return 1
     return a * to_power(a, n- 1)
-# print(polish_notation(match_brackets(tokenizer("[fact dup  1 == [][dup 1 - fact *] if] def 5 fact"))))
-# m = [dup 0 == [1][dup 1 - to_power *] if]
-# stack = [4 4 4 4 * * *]
-# [4 dup 3 == 0 [1][swap dup juggle swap 1 - to_power *] if ]
-# [4 4 3 => 4 3 4 => 4 3 4 4 => 4 4 3 4 ]
-# [4 4 4 4 * * * *]
-print(polish_notation(match_brackets(tokenizer("[to_power dup 1 == [*][swap dup juggle swap 1 - to_power *] if] def 10 10 to_power")))) #64
+print(polish_notation(match_brackets(tokenizer(files.factorial_text)))) 

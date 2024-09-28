@@ -52,7 +52,7 @@ def perform_operation(oper: str,stack: [], m: [], func_map: {}):
         }
         stack.append(math_oper[oper])
         m.pop(0)
-    elif oper == "juggle":
+    elif oper == "rot":
         last = stack.pop()
         stack.insert(-2, last) 
         m.pop(0)
