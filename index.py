@@ -1,51 +1,24 @@
 import re
+import operations
+func_map = {}
 def polish_notation(m):
     """polish notation"""
     stack = []
-    for token in m:
+    while len(m) != 0:
+        token = m[0]
         if isinstance(token,int) or is_number(token):
             stack.append(token)
+            m.pop(0)
         elif isinstance(token, list):
             stack.append(token)
+            m.pop(0)
         else:
-            perform_operation(token, stack) 
+            operations.perform_operation(token, stack, m, func_map) 
+        print(f"M: {log_str(m)}")
+        print(f"Stack: {log_str(stack)}")
+        print("------------------------------")
+        # input()
     return stack
-def perform_operation(oper,stack):
-    if oper == "first":
-        stack.append(stack.pop()[0])
-    if oper == "rest":
-        stack_top = stack.pop()
-        del stack_top[0]
-        stack.append(stack_top)
-    if oper == "cons":
-        stack_top = stack.pop()
-        stack_top.insert(0, stack.pop())
-        stack.append(stack_top)
-    if oper == "dup":
-        stack.append(stack[-1])
-    if oper == "drop":
-        stack.pop()
-    if oper == "swap":
-        last = stack.pop()
-        pre_last = stack.pop()
-        stack.append(last)
-        stack.append(pre_last)
-    if oper == '+':
-        a = stack.pop()
-        b = stack.pop()
-        stack.append(a+b)
-    if oper == '-':
-        a, b = stack.pop(), stack.pop()
-        stack.append(b - a)
-    if oper == '*':
-        a = stack.pop()
-        b = stack.pop()
-        stack.append(a*b)
-    if oper == '/':
-        a = stack.pop()
-        b = stack.pop()
-        stack.append(b/a)
-        
 def is_number(text):
     """checks if string is number"""
     if not isinstance(text, str):
@@ -53,6 +26,7 @@ def is_number(text):
     number_regex = r'^[0-9]+$'
     return re.match(number_regex, text) is not None
 
+# todo to parser.py
 def tokenizer(text):
     """app_split"""
     splitted = []
@@ -72,15 +46,10 @@ def tokenizer(text):
     splitted.append(temp_str)
 
     return splitted
-# # "3 2 swap -" -> [3,2,"swap","-"]
-# split_exp = "3      5 swap -"
-# # first_exp = "[5 2 3] first" #1   
-# first_exp = "[1 2]    3  4 5" #1   
-# print(app_split(first_exp))
-# # print(polish_notation(app_split(first_exp)))
 
-# "[1 2]3 4 5" -> ["43, [","1","2","]","3","4","5"] -> [43,["1","2"],"3","4","5"]
+# todo to parser.py
 def match_brackets(splitted):
+    
     stack = []
     for i in splitted:
         if i != "]":
@@ -95,12 +64,27 @@ def match_brackets(splitted):
             stack.pop()
             stack.append(matched)         
     return stack
+def log_str(m : list) -> str:
+    string = ""
+    for index, elem in enumerate(m):
+        if not isinstance(elem, list):
+            string += str(elem)
+            if index != len(m) - 1:
+                string += " "      
+        else:
+            string += "["
+            string += log_str(elem)
+            string += "] "
+    return string
 
-print(polish_notation(match_brackets(tokenizer("[1 2 3] first"))))
-print(polish_notation(match_brackets(tokenizer("[1 2 3] rest"))))
-print(polish_notation(match_brackets(tokenizer("42 [1 2 3] cons"))))
-print(polish_notation(match_brackets(tokenizer("[1 2 3] dup first swap rest cons"))))
-# [1 2 3] first -> 1
-# [1 2 3] rest -> [2 3]
-# 42 [1 2 3] cons -> [42 1 2 3]
-# [1 2 3] dup first swap rest cons
+def to_power(a, n):
+    if n == 0:
+        return 1
+    return a * to_power(a, n- 1)
+# print(polish_notation(match_brackets(tokenizer("[fact dup  1 == [][dup 1 - fact *] if] def 5 fact"))))
+# m = [dup 0 == [1][dup 1 - to_power *] if]
+# stack = [4 4 4 4 * * *]
+# [4 dup 3 == 0 [1][swap dup juggle swap 1 - to_power *] if ]
+# [4 4 3 => 4 3 4 => 4 3 4 4 => 4 4 3 4 ]
+# [4 4 4 4 * * * *]
+print(polish_notation(match_brackets(tokenizer("[to_power dup 1 == [*][swap dup juggle swap 1 - to_power *] if] def 10 10 to_power")))) #64
