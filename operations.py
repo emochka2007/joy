@@ -1,11 +1,13 @@
 def perform_operation(oper: str,stack: [], m: [], func_map: {}):
     if oper == 'def':
         check_if_enough_stack(stack, 1, oper)
+        check_valid_types(stack, [list])
         func = stack.pop()
         func_map[func[0]] = func[1:]
         m.pop(0)
     elif oper in {">", "<", "=="}:
         check_if_enough_stack(stack, 2, oper)
+        check_valid_types(stack, [int, int])
         last = stack.pop()
         pre_last = stack.pop()
         math_oper = {
@@ -17,15 +19,18 @@ def perform_operation(oper: str,stack: [], m: [], func_map: {}):
         m.pop(0)
     elif oper == "if":
         check_if_enough_stack(stack, 2, oper)
+        check_valid_types(stack, [list, list])
         m.pop(0)
         false_branch, true_branch, result = stack.pop(), stack.pop(), stack.pop()
         m[:0] = true_branch if result else false_branch
     elif oper == "first":
         check_if_enough_stack(stack, 1, oper)
+        check_valid_types(stack, [list])
         stack.append(stack.pop()[0])
         m.pop(0)
     elif oper == "rest":
         check_if_enough_stack(stack, 1, oper)
+        check_valid_types(stack, [list])
         stack_top = stack.pop()
         sliced_stack = stack_top[1:]
         stack.append(sliced_stack)
@@ -37,14 +42,17 @@ def perform_operation(oper: str,stack: [], m: [], func_map: {}):
         sliced_stack = [stack.pop()] + stack_top
         stack.append(sliced_stack)
         m.pop(0)
+    # no type check needed
     elif oper == "dup":
         check_if_enough_stack(stack, 1, oper)
         stack.append(stack[-1])
         m.pop(0)
+    # no type check needed
     elif oper == "drop":
         check_if_enough_stack(stack,1, oper)
         stack.pop()
         m.pop(0)
+    # no type check needed
     elif oper == "swap":
         check_if_enough_stack(stack, 2, oper)
         last = stack.pop()
@@ -54,6 +62,7 @@ def perform_operation(oper: str,stack: [], m: [], func_map: {}):
         m.pop(0)
     elif oper in ["+", "-", "*", "/"]:
         check_if_enough_stack(stack, 2, oper)
+        check_valid_types(stack, [int, int])
         a, b = stack.pop(), stack.pop()
         math_oper = {
             "+": a + b,
@@ -65,10 +74,13 @@ def perform_operation(oper: str,stack: [], m: [], func_map: {}):
         m.pop(0)
     elif oper == "rot":
         check_if_enough_stack(stack, 3, oper)
+        check_valid_types(stack, [int, int, int])
         last = stack.pop()
         stack.insert(-2, last) 
         m.pop(0)
     elif oper == "null":
+        check_if_enough_stack(stack, 1, oper)
+        check_valid_types(stack, [list])
         last = stack.pop()
         stack.append(len(last) == 0)
         m.pop(0)

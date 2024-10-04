@@ -29,13 +29,19 @@ def is_number(text):
 
 # todo to parser.py
 # \n error
-
 def tokenizer(text):
     """app_split"""
     splitted = []
     temp_str = ""
+    comment_start = False
     for i in text:
-       if i in ("[", "]"):
+       if comment_start:
+            if i == "\n":
+                comment_start = False
+            continue
+       if i == "#":
+           comment_start = True
+       elif i in ("[", "]"):
            if temp_str != "":
                splitted.append(temp_str)
            splitted.append(i)
@@ -82,8 +88,5 @@ def log_str(m : list) -> str:
             string += "] "
     return string
 
-def to_power(a, n):
-    if n == 0:
-        return 1
-    return a * to_power(a, n- 1)
-print(polish_notation(match_brackets(tokenizer(files.read_from_file())))) 
+
+print(polish_notation(match_brackets(tokenizer(files.read_from_file()))))

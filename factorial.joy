@@ -1,10 +1,2 @@
-[only_one dup null [False] [rest null] if] def [312] only_one
-
-
-
-
-
-
-
-
-
+# last element of array
+[last dup rest null [][rest last] if] def [] last
