@@ -14,3 +14,5 @@ assert(polish_notation(match_brackets(tokenizer("[fact dup  1 == [][dup 1 - fact
 assert(polish_notation(match_brackets(tokenizer("2 3 4 rot"))) == [4, 2, 3])
 assert(polish_notation(match_brackets(tokenizer("[to_power dup 1 == [*][swap dup rot swap 1 - to_power *] if] def 10 2 to_power"))) == [100])
 assert(polish_notation(match_brackets(tokenizer("[to_power dup 1 == [*][swap dup rot swap 1 - to_power *] if] def 4 4 to_power"))) == [256])
+
+#[len dup null [drop 0][rest len 1 +] if] def [] len #0

@@ -1,4 +1,4 @@
-def read_from_file(path: str):
-    with open(path, encoding="utf-8") as file:
+import sys
+def read_from_file():
+    with open(sys.argv[1], encoding="utf-8") as file:
         return file.read()
-factorial_text = read_from_file("factorial.joy")

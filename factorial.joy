@@ -1,1 +1,10 @@
-[to_power dup 1 == [*][swap dup rot swap 1 - to_power *] if] def 10 10 to_power
+[only_one dup null [False] [rest null] if] def [312] only_one
+
+
+
+
+
+
+
+
+

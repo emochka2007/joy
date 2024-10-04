@@ -28,6 +28,8 @@ def is_number(text):
     return re.match(number_regex, text) is not None
 
 # todo to parser.py
+# \n error
+
 def tokenizer(text):
     """app_split"""
     splitted = []
@@ -38,14 +40,14 @@ def tokenizer(text):
                splitted.append(temp_str)
            splitted.append(i)
            temp_str = ""
-       elif i != " ":
-           temp_str = f"{temp_str}{i}"
-       else:
+       elif i in (" ", "\n"):
            if temp_str != "":
                splitted.append(temp_str)
            temp_str = ""
-    splitted.append(temp_str)
-
+       else:
+          temp_str = f"{temp_str}{i}"
+     
+    if temp_str != "" : splitted.append(temp_str)
     return splitted
 
 # todo to parser.py
@@ -56,6 +58,8 @@ def match_brackets(splitted):
         if i != "]":
             if is_number(i):
                 stack.append(int(i))
+            elif i in ("True", "False"):
+                stack.append(i == "True")
             else:
                 stack.append(i)
         else:
@@ -82,4 +86,4 @@ def to_power(a, n):
     if n == 0:
         return 1
     return a * to_power(a, n- 1)
-print(polish_notation(match_brackets(tokenizer(files.factorial_text)))) 
+print(polish_notation(match_brackets(tokenizer(files.read_from_file())))) 
