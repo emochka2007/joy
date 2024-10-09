@@ -26,12 +26,19 @@ def perform_operation(oper: str,stack: [], m: [], func_map: {}):
     elif oper == "first":
         check_if_enough_stack(stack, 1, oper)
         check_valid_types(stack, [list])
-        stack.append(stack.pop()[0])
+        stack_top = stack.pop()
+        if len(stack_top) < 1:
+             print(f"Not enough elements inside array for first operation. Stack: {stack}")
+             exit(1)
+        stack.append(stack_top[0])
         m.pop(0)
     elif oper == "rest":
         check_if_enough_stack(stack, 1, oper)
         check_valid_types(stack, [list])
         stack_top = stack.pop()
+        if len(stack_top) < 1:
+             print(f"Not enough elements inside array for rest operation. Stack: {stack}")
+             exit(1)
         sliced_stack = stack_top[1:]
         stack.append(sliced_stack)
         m.pop(0)
@@ -74,7 +81,6 @@ def perform_operation(oper: str,stack: [], m: [], func_map: {}):
         m.pop(0)
     elif oper == "rot":
         check_if_enough_stack(stack, 3, oper)
-        check_valid_types(stack, [int, int, int])
         last = stack.pop()
         stack.insert(-2, last) 
         m.pop(0)
@@ -84,6 +90,15 @@ def perform_operation(oper: str,stack: [], m: [], func_map: {}):
         last = stack.pop()
         stack.append(len(last) == 0)
         m.pop(0)
+    elif oper == "stop":
+        print("Stop oper")
+        exit(1)
+    elif oper == "dip":
+        m.pop(0)
+        action = stack.pop()
+        last = stack.pop()
+        m.insert(0, last)
+        m[:0] = action
     elif oper in func_map:
         m.pop(0)
         m[:0] = func_map[oper]

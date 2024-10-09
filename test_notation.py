@@ -19,6 +19,11 @@ assert(polish_notation(match_brackets(tokenizer("[len dup null [drop 0][rest len
 assert(polish_notation(match_brackets(tokenizer("[only_one dup null [False] [rest null] if] def [312] only_one"))) == [True])
 #Support multiline & comments
 assert(polish_notation(match_brackets(tokenizer("# comment \n 4 2 -\n4 2 -"))) == [2,2])
-assert(polish_notation(match_brackets(tokenizer("[last dup rest null [][rest last] if] def [] last"))) == [[]])
-assert(polish_notation(match_brackets(tokenizer("[last dup rest null [][rest last] if] def [1 2 3 4] last"))) == [[4]])
+assert(polish_notation(match_brackets(tokenizer("[last dup rest null [first][rest last] if] def [1 2 3] last"))) == [3])
+"""
+[uncons dup first swap rest] def
+[pop dup rest null [rest][uncons pop cons] if] def [1 2 3 4] pop
+"""
 
+#15
+[sum dup rest null [first][uncons sum +] if] def [1 2 3 4 5] sum 

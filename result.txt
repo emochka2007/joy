@@ -1,0 +1,40 @@
+M: def [is_empty_with_dip [dup null] dip swap] def [] [1 2] is_empty_with_dip
+Stack: [uncons dup first swap rest] 
+------------------------------
+M: [is_empty_with_dip [dup null] dip swap] def [] [1 2] is_empty_with_dip
+Stack: 
+------------------------------
+M: def [] [1 2] is_empty_with_dip
+Stack: [is_empty_with_dip [dup null] dip swap] 
+------------------------------
+M: [] [1 2] is_empty_with_dip
+Stack: 
+------------------------------
+M: [1 2] is_empty_with_dip
+Stack: [] 
+------------------------------
+M: is_empty_with_dip
+Stack: [] [1 2] 
+------------------------------
+M: [dup null] dip swap
+Stack: [] [1 2] 
+------------------------------
+M: dip swap
+Stack: [] [1 2] [dup null] 
+------------------------------
+M: dup null [1 2] swap
+Stack: [] 
+------------------------------
+M: null [1 2] swap
+Stack: [] [] 
+------------------------------
+M: [1 2] swap
+Stack: [] True
+------------------------------
+M: swap
+Stack: [] True [1 2] 
+------------------------------
+M: 
+Stack: [] [1 2] True
+------------------------------
+[[], [1, 2], True]
