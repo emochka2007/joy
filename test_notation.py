@@ -26,4 +26,12 @@ assert(polish_notation(match_brackets(tokenizer("[last dup rest null [first][res
 """
 
 #15
-[sum dup rest null [first][uncons sum +] if] def [1 2 3 4 5] sum 
+# [sum dup rest null [first][uncons sum +] if] def [1 2 3 4 5] sum
+# 2 5 [1 +] dip stop
+#[conc_with_dip is_empty_with_dip [swap drop][[uncons] dip conc_with_dip cons] if ] def [1 2 3] [4 5 6] conc_with_dip
+
+# 1 2 3 rolldown # 2 3 1
+
+
+#[conc is_empty [swap drop][swap uncons rot rot conc cons] if ] def [1 2 3] [4 5 6] conc
+#[conc is_empty [swap drop][swap uncons rolldown conc cons] if ] def [1 2 3] [4 5 6] conc

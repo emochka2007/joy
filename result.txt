@@ -1,40 +1,55 @@
-M: def [is_empty_with_dip [dup null] dip swap] def [] [1 2] is_empty_with_dip
+M: def [map [uncons] dip [swap i] dip] def [1 2 3] [2 *] map
 Stack: [uncons dup first swap rest] 
 ------------------------------
-M: [is_empty_with_dip [dup null] dip swap] def [] [1 2] is_empty_with_dip
+M: [map [uncons] dip [swap i] dip] def [1 2 3] [2 *] map
 Stack: 
 ------------------------------
-M: def [] [1 2] is_empty_with_dip
-Stack: [is_empty_with_dip [dup null] dip swap] 
+M: def [1 2 3] [2 *] map
+Stack: [map [uncons] dip [swap i] dip] 
 ------------------------------
-M: [] [1 2] is_empty_with_dip
+M: [1 2 3] [2 *] map
 Stack: 
 ------------------------------
-M: [1 2] is_empty_with_dip
-Stack: [] 
+M: [2 *] map
+Stack: [1 2 3] 
 ------------------------------
-M: is_empty_with_dip
-Stack: [] [1 2] 
+M: map
+Stack: [1 2 3] [2 *] 
 ------------------------------
-M: [dup null] dip swap
-Stack: [] [1 2] 
+M: [uncons] dip [swap i] dip
+Stack: [1 2 3] [2 *] 
 ------------------------------
-M: dip swap
-Stack: [] [1 2] [dup null] 
+M: dip [swap i] dip
+Stack: [1 2 3] [2 *] [uncons] 
 ------------------------------
-M: dup null [1 2] swap
-Stack: [] 
+M: uncons [2 *] [swap i] dip
+Stack: [1 2 3] 
 ------------------------------
-M: null [1 2] swap
-Stack: [] [] 
+M: dup first swap rest [2 *] [swap i] dip
+Stack: [1 2 3] 
 ------------------------------
-M: [1 2] swap
-Stack: [] True
+M: first swap rest [2 *] [swap i] dip
+Stack: [1 2 3] [1 2 3] 
 ------------------------------
-M: swap
-Stack: [] True [1 2] 
+M: swap rest [2 *] [swap i] dip
+Stack: [1 2 3] 1
 ------------------------------
-M: 
-Stack: [] [1 2] True
+M: rest [2 *] [swap i] dip
+Stack: 1 [1 2 3] 
 ------------------------------
-[[], [1, 2], True]
+M: [2 *] [swap i] dip
+Stack: 1 [2 3] 
+------------------------------
+M: [swap i] dip
+Stack: 1 [2 3] [2 *] 
+------------------------------
+M: dip
+Stack: 1 [2 3] [2 *] [swap i] 
+------------------------------
+M: swap i [2 *] 
+Stack: 1 [2 3] 
+------------------------------
+M: i [2 *] 
+Stack: [2 3] 1
+------------------------------
+l 1

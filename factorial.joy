@@ -1,10 +1,13 @@
 [uncons dup first swap rest] def
-#[is_empty swap dup null rot swap rot rot] def
-[is_empty_with_dip [dup null] dip swap] def [] [1 2] is_empty_with_dip
+[is_empty swap dup null rot swap rot rot] def
+[is_empty_with_dip [dup null] dip swap] def
 #15
 #[conc is_empty [stop][swap uncons rot rot conc cons] if] def [1 2 3] [4 5 6] conc
 #[conc swap uncons rot rot] def [1 2 3] [4 5 6] conc
 
-[conc_with_dip ] def [1 2 3] [4 5 6] conc_with_dip 
+#[conc_with_dip is_empty [swap drop][[uncons] dip conc_with_dip cons] if ] def [1 2 3] [4 5 6] conc_with_dip
+#[conc is_empty [swap drop][swap uncons rot rot conc cons] if ] def [1 2 3] [4 5 6] conc
+[conc is_empty [swap drop][swap uncons rolldown conc cons] if ] def [1 2 3] [4 5 6] conc
 
-#[1 2 3] [4 5 6] is_empty -> [1 2 3] [4 5 6] False ...
+
+[1 2 3] [2 *] map -> [2 4 6]

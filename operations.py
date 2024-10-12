@@ -99,6 +99,21 @@ def perform_operation(oper: str,stack: [], m: [], func_map: {}):
         last = stack.pop()
         m.insert(0, last)
         m[:0] = action
+    elif oper == "rolldown": # eq to rot rot
+        # X Y Z -> Y Z X moves y and z down, moves x up
+        m.pop(0)
+        z = stack.pop()
+        y = stack.pop()
+        x = stack.pop()
+        stack.append(y)
+        stack.append(z)
+        stack.append(x)
+    elif oper == 'i':
+        m.pop(0)
+        l = stack.pop()
+        check_valid_types(stack, [list])
+        print('l', l)
+        m[:0] = l
     elif oper in func_map:
         m.pop(0)
         m[:0] = func_map[oper]
@@ -116,6 +131,9 @@ def check_if_enough_stack(stack:[], required: int, operation: str):
 def check_valid_types(stack:[], types_array: [type]):
     # iterable
     for i, elem in enumerate(types_array):
+        if len(stack) == 0:
+            print("Stack len equal zero")
+            exit(1)
         stack_type = type(stack[len(stack) - 1 - i])
         if stack_type != elem:
             print(f"Incorrect type on stack, expected {elem}, received {stack_type}") 

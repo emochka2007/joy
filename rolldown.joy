@@ -1,0 +1,2 @@
+[uncons dup first swap rest] def
+[map [uncons] dip [swap i] dip] def [1 2 3] [2 *] map
