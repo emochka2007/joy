@@ -111,8 +111,7 @@ def perform_operation(oper: str,stack: [], m: [], func_map: {}):
     elif oper == 'i':
         m.pop(0)
         l = stack.pop()
-        check_valid_types(stack, [list])
-        print('l', l)
+        # check_valid_types(stack, [list])
         m[:0] = l
     elif oper in func_map:
         m.pop(0)

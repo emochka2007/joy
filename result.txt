@@ -1,55 +1,388 @@
-M: def [map [uncons] dip [swap i] dip] def [1 2 3] [2 *] map
+M: def [is_empty_with_dip [dup null] dip swap] def [map is_empty_with_dip [drop drop] [[uncons] dip rolldown swap dup rot i rot map] if] def [1 2 3 4] [2 *] map
 Stack: [uncons dup first swap rest] 
 ------------------------------
-M: [map [uncons] dip [swap i] dip] def [1 2 3] [2 *] map
+M: [is_empty_with_dip [dup null] dip swap] def [map is_empty_with_dip [drop drop] [[uncons] dip rolldown swap dup rot i rot map] if] def [1 2 3 4] [2 *] map
 Stack: 
 ------------------------------
-M: def [1 2 3] [2 *] map
-Stack: [map [uncons] dip [swap i] dip] 
+M: def [map is_empty_with_dip [drop drop] [[uncons] dip rolldown swap dup rot i rot map] if] def [1 2 3 4] [2 *] map
+Stack: [is_empty_with_dip [dup null] dip swap] 
 ------------------------------
-M: [1 2 3] [2 *] map
+M: [map is_empty_with_dip [drop drop] [[uncons] dip rolldown swap dup rot i rot map] if] def [1 2 3 4] [2 *] map
+Stack: 
+------------------------------
+M: def [1 2 3 4] [2 *] map
+Stack: [map is_empty_with_dip [drop drop] [[uncons] dip rolldown swap dup rot i rot map] if] 
+------------------------------
+M: [1 2 3 4] [2 *] map
 Stack: 
 ------------------------------
 M: [2 *] map
-Stack: [1 2 3] 
+Stack: [1 2 3 4] 
 ------------------------------
 M: map
-Stack: [1 2 3] [2 *] 
+Stack: [1 2 3 4] [2 *] 
 ------------------------------
-M: [uncons] dip [swap i] dip
-Stack: [1 2 3] [2 *] 
+M: is_empty_with_dip [drop drop] [[uncons] dip rolldown swap dup rot i rot map] if
+Stack: [1 2 3 4] [2 *] 
 ------------------------------
-M: dip [swap i] dip
-Stack: [1 2 3] [2 *] [uncons] 
+M: [dup null] dip swap [drop drop] [[uncons] dip rolldown swap dup rot i rot map] if
+Stack: [1 2 3 4] [2 *] 
 ------------------------------
-M: uncons [2 *] [swap i] dip
-Stack: [1 2 3] 
+M: dip swap [drop drop] [[uncons] dip rolldown swap dup rot i rot map] if
+Stack: [1 2 3 4] [2 *] [dup null] 
 ------------------------------
-M: dup first swap rest [2 *] [swap i] dip
-Stack: [1 2 3] 
+M: dup null [2 *] swap [drop drop] [[uncons] dip rolldown swap dup rot i rot map] if
+Stack: [1 2 3 4] 
 ------------------------------
-M: first swap rest [2 *] [swap i] dip
-Stack: [1 2 3] [1 2 3] 
+M: null [2 *] swap [drop drop] [[uncons] dip rolldown swap dup rot i rot map] if
+Stack: [1 2 3 4] [1 2 3 4] 
 ------------------------------
-M: swap rest [2 *] [swap i] dip
-Stack: [1 2 3] 1
+M: [2 *] swap [drop drop] [[uncons] dip rolldown swap dup rot i rot map] if
+Stack: [1 2 3 4] False
 ------------------------------
-M: rest [2 *] [swap i] dip
-Stack: 1 [1 2 3] 
+M: swap [drop drop] [[uncons] dip rolldown swap dup rot i rot map] if
+Stack: [1 2 3 4] False [2 *] 
 ------------------------------
-M: [2 *] [swap i] dip
-Stack: 1 [2 3] 
+M: [drop drop] [[uncons] dip rolldown swap dup rot i rot map] if
+Stack: [1 2 3 4] [2 *] False
 ------------------------------
-M: [swap i] dip
-Stack: 1 [2 3] [2 *] 
+M: [[uncons] dip rolldown swap dup rot i rot map] if
+Stack: [1 2 3 4] [2 *] False [drop drop] 
 ------------------------------
-M: dip
-Stack: 1 [2 3] [2 *] [swap i] 
+M: if
+Stack: [1 2 3 4] [2 *] False [drop drop] [[uncons] dip rolldown swap dup rot i rot map] 
 ------------------------------
-M: swap i [2 *] 
-Stack: 1 [2 3] 
+M: [uncons] dip rolldown swap dup rot i rot map
+Stack: [1 2 3 4] [2 *] 
 ------------------------------
-M: i [2 *] 
-Stack: [2 3] 1
+M: dip rolldown swap dup rot i rot map
+Stack: [1 2 3 4] [2 *] [uncons] 
 ------------------------------
-l 1
+M: uncons [2 *] rolldown swap dup rot i rot map
+Stack: [1 2 3 4] 
+------------------------------
+M: dup first swap rest [2 *] rolldown swap dup rot i rot map
+Stack: [1 2 3 4] 
+------------------------------
+M: first swap rest [2 *] rolldown swap dup rot i rot map
+Stack: [1 2 3 4] [1 2 3 4] 
+------------------------------
+M: swap rest [2 *] rolldown swap dup rot i rot map
+Stack: [1 2 3 4] 1
+------------------------------
+M: rest [2 *] rolldown swap dup rot i rot map
+Stack: 1 [1 2 3 4] 
+------------------------------
+M: [2 *] rolldown swap dup rot i rot map
+Stack: 1 [2 3 4] 
+------------------------------
+M: rolldown swap dup rot i rot map
+Stack: 1 [2 3 4] [2 *] 
+------------------------------
+M: swap dup rot i rot map
+Stack: [2 3 4] [2 *] 1
+------------------------------
+M: dup rot i rot map
+Stack: [2 3 4] 1 [2 *] 
+------------------------------
+M: rot i rot map
+Stack: [2 3 4] 1 [2 *] [2 *] 
+------------------------------
+M: i rot map
+Stack: [2 3 4] [2 *] 1 [2 *] 
+------------------------------
+M: 2 * rot map
+Stack: [2 3 4] [2 *] 1
+------------------------------
+M: * rot map
+Stack: [2 3 4] [2 *] 1 2
+------------------------------
+M: rot map
+Stack: [2 3 4] [2 *] 2
+------------------------------
+M: map
+Stack: 2 [2 3 4] [2 *] 
+------------------------------
+M: is_empty_with_dip [drop drop] [[uncons] dip rolldown swap dup rot i rot map] if
+Stack: 2 [2 3 4] [2 *] 
+------------------------------
+M: [dup null] dip swap [drop drop] [[uncons] dip rolldown swap dup rot i rot map] if
+Stack: 2 [2 3 4] [2 *] 
+------------------------------
+M: dip swap [drop drop] [[uncons] dip rolldown swap dup rot i rot map] if
+Stack: 2 [2 3 4] [2 *] [dup null] 
+------------------------------
+M: dup null [2 *] swap [drop drop] [[uncons] dip rolldown swap dup rot i rot map] if
+Stack: 2 [2 3 4] 
+------------------------------
+M: null [2 *] swap [drop drop] [[uncons] dip rolldown swap dup rot i rot map] if
+Stack: 2 [2 3 4] [2 3 4] 
+------------------------------
+M: [2 *] swap [drop drop] [[uncons] dip rolldown swap dup rot i rot map] if
+Stack: 2 [2 3 4] False
+------------------------------
+M: swap [drop drop] [[uncons] dip rolldown swap dup rot i rot map] if
+Stack: 2 [2 3 4] False [2 *] 
+------------------------------
+M: [drop drop] [[uncons] dip rolldown swap dup rot i rot map] if
+Stack: 2 [2 3 4] [2 *] False
+------------------------------
+M: [[uncons] dip rolldown swap dup rot i rot map] if
+Stack: 2 [2 3 4] [2 *] False [drop drop] 
+------------------------------
+M: if
+Stack: 2 [2 3 4] [2 *] False [drop drop] [[uncons] dip rolldown swap dup rot i rot map] 
+------------------------------
+M: [uncons] dip rolldown swap dup rot i rot map
+Stack: 2 [2 3 4] [2 *] 
+------------------------------
+M: dip rolldown swap dup rot i rot map
+Stack: 2 [2 3 4] [2 *] [uncons] 
+------------------------------
+M: uncons [2 *] rolldown swap dup rot i rot map
+Stack: 2 [2 3 4] 
+------------------------------
+M: dup first swap rest [2 *] rolldown swap dup rot i rot map
+Stack: 2 [2 3 4] 
+------------------------------
+M: first swap rest [2 *] rolldown swap dup rot i rot map
+Stack: 2 [2 3 4] [2 3 4] 
+------------------------------
+M: swap rest [2 *] rolldown swap dup rot i rot map
+Stack: 2 [2 3 4] 2
+------------------------------
+M: rest [2 *] rolldown swap dup rot i rot map
+Stack: 2 2 [2 3 4] 
+------------------------------
+M: [2 *] rolldown swap dup rot i rot map
+Stack: 2 2 [3 4] 
+------------------------------
+M: rolldown swap dup rot i rot map
+Stack: 2 2 [3 4] [2 *] 
+------------------------------
+M: swap dup rot i rot map
+Stack: 2 [3 4] [2 *] 2
+------------------------------
+M: dup rot i rot map
+Stack: 2 [3 4] 2 [2 *] 
+------------------------------
+M: rot i rot map
+Stack: 2 [3 4] 2 [2 *] [2 *] 
+------------------------------
+M: i rot map
+Stack: 2 [3 4] [2 *] 2 [2 *] 
+------------------------------
+M: 2 * rot map
+Stack: 2 [3 4] [2 *] 2
+------------------------------
+M: * rot map
+Stack: 2 [3 4] [2 *] 2 2
+------------------------------
+M: rot map
+Stack: 2 [3 4] [2 *] 4
+------------------------------
+M: map
+Stack: 2 4 [3 4] [2 *] 
+------------------------------
+M: is_empty_with_dip [drop drop] [[uncons] dip rolldown swap dup rot i rot map] if
+Stack: 2 4 [3 4] [2 *] 
+------------------------------
+M: [dup null] dip swap [drop drop] [[uncons] dip rolldown swap dup rot i rot map] if
+Stack: 2 4 [3 4] [2 *] 
+------------------------------
+M: dip swap [drop drop] [[uncons] dip rolldown swap dup rot i rot map] if
+Stack: 2 4 [3 4] [2 *] [dup null] 
+------------------------------
+M: dup null [2 *] swap [drop drop] [[uncons] dip rolldown swap dup rot i rot map] if
+Stack: 2 4 [3 4] 
+------------------------------
+M: null [2 *] swap [drop drop] [[uncons] dip rolldown swap dup rot i rot map] if
+Stack: 2 4 [3 4] [3 4] 
+------------------------------
+M: [2 *] swap [drop drop] [[uncons] dip rolldown swap dup rot i rot map] if
+Stack: 2 4 [3 4] False
+------------------------------
+M: swap [drop drop] [[uncons] dip rolldown swap dup rot i rot map] if
+Stack: 2 4 [3 4] False [2 *] 
+------------------------------
+M: [drop drop] [[uncons] dip rolldown swap dup rot i rot map] if
+Stack: 2 4 [3 4] [2 *] False
+------------------------------
+M: [[uncons] dip rolldown swap dup rot i rot map] if
+Stack: 2 4 [3 4] [2 *] False [drop drop] 
+------------------------------
+M: if
+Stack: 2 4 [3 4] [2 *] False [drop drop] [[uncons] dip rolldown swap dup rot i rot map] 
+------------------------------
+M: [uncons] dip rolldown swap dup rot i rot map
+Stack: 2 4 [3 4] [2 *] 
+------------------------------
+M: dip rolldown swap dup rot i rot map
+Stack: 2 4 [3 4] [2 *] [uncons] 
+------------------------------
+M: uncons [2 *] rolldown swap dup rot i rot map
+Stack: 2 4 [3 4] 
+------------------------------
+M: dup first swap rest [2 *] rolldown swap dup rot i rot map
+Stack: 2 4 [3 4] 
+------------------------------
+M: first swap rest [2 *] rolldown swap dup rot i rot map
+Stack: 2 4 [3 4] [3 4] 
+------------------------------
+M: swap rest [2 *] rolldown swap dup rot i rot map
+Stack: 2 4 [3 4] 3
+------------------------------
+M: rest [2 *] rolldown swap dup rot i rot map
+Stack: 2 4 3 [3 4] 
+------------------------------
+M: [2 *] rolldown swap dup rot i rot map
+Stack: 2 4 3 [4] 
+------------------------------
+M: rolldown swap dup rot i rot map
+Stack: 2 4 3 [4] [2 *] 
+------------------------------
+M: swap dup rot i rot map
+Stack: 2 4 [4] [2 *] 3
+------------------------------
+M: dup rot i rot map
+Stack: 2 4 [4] 3 [2 *] 
+------------------------------
+M: rot i rot map
+Stack: 2 4 [4] 3 [2 *] [2 *] 
+------------------------------
+M: i rot map
+Stack: 2 4 [4] [2 *] 3 [2 *] 
+------------------------------
+M: 2 * rot map
+Stack: 2 4 [4] [2 *] 3
+------------------------------
+M: * rot map
+Stack: 2 4 [4] [2 *] 3 2
+------------------------------
+M: rot map
+Stack: 2 4 [4] [2 *] 6
+------------------------------
+M: map
+Stack: 2 4 6 [4] [2 *] 
+------------------------------
+M: is_empty_with_dip [drop drop] [[uncons] dip rolldown swap dup rot i rot map] if
+Stack: 2 4 6 [4] [2 *] 
+------------------------------
+M: [dup null] dip swap [drop drop] [[uncons] dip rolldown swap dup rot i rot map] if
+Stack: 2 4 6 [4] [2 *] 
+------------------------------
+M: dip swap [drop drop] [[uncons] dip rolldown swap dup rot i rot map] if
+Stack: 2 4 6 [4] [2 *] [dup null] 
+------------------------------
+M: dup null [2 *] swap [drop drop] [[uncons] dip rolldown swap dup rot i rot map] if
+Stack: 2 4 6 [4] 
+------------------------------
+M: null [2 *] swap [drop drop] [[uncons] dip rolldown swap dup rot i rot map] if
+Stack: 2 4 6 [4] [4] 
+------------------------------
+M: [2 *] swap [drop drop] [[uncons] dip rolldown swap dup rot i rot map] if
+Stack: 2 4 6 [4] False
+------------------------------
+M: swap [drop drop] [[uncons] dip rolldown swap dup rot i rot map] if
+Stack: 2 4 6 [4] False [2 *] 
+------------------------------
+M: [drop drop] [[uncons] dip rolldown swap dup rot i rot map] if
+Stack: 2 4 6 [4] [2 *] False
+------------------------------
+M: [[uncons] dip rolldown swap dup rot i rot map] if
+Stack: 2 4 6 [4] [2 *] False [drop drop] 
+------------------------------
+M: if
+Stack: 2 4 6 [4] [2 *] False [drop drop] [[uncons] dip rolldown swap dup rot i rot map] 
+------------------------------
+M: [uncons] dip rolldown swap dup rot i rot map
+Stack: 2 4 6 [4] [2 *] 
+------------------------------
+M: dip rolldown swap dup rot i rot map
+Stack: 2 4 6 [4] [2 *] [uncons] 
+------------------------------
+M: uncons [2 *] rolldown swap dup rot i rot map
+Stack: 2 4 6 [4] 
+------------------------------
+M: dup first swap rest [2 *] rolldown swap dup rot i rot map
+Stack: 2 4 6 [4] 
+------------------------------
+M: first swap rest [2 *] rolldown swap dup rot i rot map
+Stack: 2 4 6 [4] [4] 
+------------------------------
+M: swap rest [2 *] rolldown swap dup rot i rot map
+Stack: 2 4 6 [4] 4
+------------------------------
+M: rest [2 *] rolldown swap dup rot i rot map
+Stack: 2 4 6 4 [4] 
+------------------------------
+M: [2 *] rolldown swap dup rot i rot map
+Stack: 2 4 6 4 [] 
+------------------------------
+M: rolldown swap dup rot i rot map
+Stack: 2 4 6 4 [] [2 *] 
+------------------------------
+M: swap dup rot i rot map
+Stack: 2 4 6 [] [2 *] 4
+------------------------------
+M: dup rot i rot map
+Stack: 2 4 6 [] 4 [2 *] 
+------------------------------
+M: rot i rot map
+Stack: 2 4 6 [] 4 [2 *] [2 *] 
+------------------------------
+M: i rot map
+Stack: 2 4 6 [] [2 *] 4 [2 *] 
+------------------------------
+M: 2 * rot map
+Stack: 2 4 6 [] [2 *] 4
+------------------------------
+M: * rot map
+Stack: 2 4 6 [] [2 *] 4 2
+------------------------------
+M: rot map
+Stack: 2 4 6 [] [2 *] 8
+------------------------------
+M: map
+Stack: 2 4 6 8 [] [2 *] 
+------------------------------
+M: is_empty_with_dip [drop drop] [[uncons] dip rolldown swap dup rot i rot map] if
+Stack: 2 4 6 8 [] [2 *] 
+------------------------------
+M: [dup null] dip swap [drop drop] [[uncons] dip rolldown swap dup rot i rot map] if
+Stack: 2 4 6 8 [] [2 *] 
+------------------------------
+M: dip swap [drop drop] [[uncons] dip rolldown swap dup rot i rot map] if
+Stack: 2 4 6 8 [] [2 *] [dup null] 
+------------------------------
+M: dup null [2 *] swap [drop drop] [[uncons] dip rolldown swap dup rot i rot map] if
+Stack: 2 4 6 8 [] 
+------------------------------
+M: null [2 *] swap [drop drop] [[uncons] dip rolldown swap dup rot i rot map] if
+Stack: 2 4 6 8 [] [] 
+------------------------------
+M: [2 *] swap [drop drop] [[uncons] dip rolldown swap dup rot i rot map] if
+Stack: 2 4 6 8 [] True
+------------------------------
+M: swap [drop drop] [[uncons] dip rolldown swap dup rot i rot map] if
+Stack: 2 4 6 8 [] True [2 *] 
+------------------------------
+M: [drop drop] [[uncons] dip rolldown swap dup rot i rot map] if
+Stack: 2 4 6 8 [] [2 *] True
+------------------------------
+M: [[uncons] dip rolldown swap dup rot i rot map] if
+Stack: 2 4 6 8 [] [2 *] True [drop drop] 
+------------------------------
+M: if
+Stack: 2 4 6 8 [] [2 *] True [drop drop] [[uncons] dip rolldown swap dup rot i rot map] 
+------------------------------
+M: drop drop
+Stack: 2 4 6 8 [] [2 *] 
+------------------------------
+M: drop
+Stack: 2 4 6 8 [] 
+------------------------------
+M: 
+Stack: 2 4 6 8
+------------------------------
+[2, 4, 6, 8]
