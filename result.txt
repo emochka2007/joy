@@ -1,388 +1,214 @@
-M: def [is_empty_with_dip [dup null] dip swap] def [map is_empty_with_dip [drop drop] [[uncons] dip rolldown swap dup rot i rot map] if] def [1 2 3 4] [2 *] map
+M: def [uncons dup first swap rest] def [filter is_empty_dip [] [uncons rot dup rot swap dup rot i [] [swap drop] if filter] if] def [0 >] [-1 2 -3] filter
+Stack: [is_empty_dip [dup null] dip swap] 
+------------------------------
+M: [uncons dup first swap rest] def [filter is_empty_dip [] [uncons rot dup rot swap dup rot i [] [swap drop] if filter] if] def [0 >] [-1 2 -3] filter
+Stack: 
+------------------------------
+M: def [filter is_empty_dip [] [uncons rot dup rot swap dup rot i [] [swap drop] if filter] if] def [0 >] [-1 2 -3] filter
 Stack: [uncons dup first swap rest] 
 ------------------------------
-M: [is_empty_with_dip [dup null] dip swap] def [map is_empty_with_dip [drop drop] [[uncons] dip rolldown swap dup rot i rot map] if] def [1 2 3 4] [2 *] map
+M: [filter is_empty_dip [] [uncons rot dup rot swap dup rot i [] [swap drop] if filter] if] def [0 >] [-1 2 -3] filter
 Stack: 
 ------------------------------
-M: def [map is_empty_with_dip [drop drop] [[uncons] dip rolldown swap dup rot i rot map] if] def [1 2 3 4] [2 *] map
-Stack: [is_empty_with_dip [dup null] dip swap] 
+M: def [0 >] [-1 2 -3] filter
+Stack: [filter is_empty_dip [] [uncons rot dup rot swap dup rot i [] [swap drop] if filter] if] 
 ------------------------------
-M: [map is_empty_with_dip [drop drop] [[uncons] dip rolldown swap dup rot i rot map] if] def [1 2 3 4] [2 *] map
+M: [0 >] [-1 2 -3] filter
 Stack: 
 ------------------------------
-M: def [1 2 3 4] [2 *] map
-Stack: [map is_empty_with_dip [drop drop] [[uncons] dip rolldown swap dup rot i rot map] if] 
+M: [-1 2 -3] filter
+Stack: [0 >] 
 ------------------------------
-M: [1 2 3 4] [2 *] map
-Stack: 
+M: filter
+Stack: [0 >] [-1 2 -3] 
 ------------------------------
-M: [2 *] map
-Stack: [1 2 3 4] 
+M: is_empty_dip [] [uncons rot dup rot swap dup rot i [] [swap drop] if filter] if
+Stack: [0 >] [-1 2 -3] 
 ------------------------------
-M: map
-Stack: [1 2 3 4] [2 *] 
+M: [dup null] dip swap [] [uncons rot dup rot swap dup rot i [] [swap drop] if filter] if
+Stack: [0 >] [-1 2 -3] 
 ------------------------------
-M: is_empty_with_dip [drop drop] [[uncons] dip rolldown swap dup rot i rot map] if
-Stack: [1 2 3 4] [2 *] 
+M: dip swap [] [uncons rot dup rot swap dup rot i [] [swap drop] if filter] if
+Stack: [0 >] [-1 2 -3] [dup null] 
 ------------------------------
-M: [dup null] dip swap [drop drop] [[uncons] dip rolldown swap dup rot i rot map] if
-Stack: [1 2 3 4] [2 *] 
+M: dup null [-1 2 -3] swap [] [uncons rot dup rot swap dup rot i [] [swap drop] if filter] if
+Stack: [0 >] 
 ------------------------------
-M: dip swap [drop drop] [[uncons] dip rolldown swap dup rot i rot map] if
-Stack: [1 2 3 4] [2 *] [dup null] 
+M: null [-1 2 -3] swap [] [uncons rot dup rot swap dup rot i [] [swap drop] if filter] if
+Stack: [0 >] [0 >] 
 ------------------------------
-M: dup null [2 *] swap [drop drop] [[uncons] dip rolldown swap dup rot i rot map] if
-Stack: [1 2 3 4] 
+M: [-1 2 -3] swap [] [uncons rot dup rot swap dup rot i [] [swap drop] if filter] if
+Stack: [0 >] False
 ------------------------------
-M: null [2 *] swap [drop drop] [[uncons] dip rolldown swap dup rot i rot map] if
-Stack: [1 2 3 4] [1 2 3 4] 
+M: swap [] [uncons rot dup rot swap dup rot i [] [swap drop] if filter] if
+Stack: [0 >] False [-1 2 -3] 
 ------------------------------
-M: [2 *] swap [drop drop] [[uncons] dip rolldown swap dup rot i rot map] if
-Stack: [1 2 3 4] False
+M: [] [uncons rot dup rot swap dup rot i [] [swap drop] if filter] if
+Stack: [0 >] [-1 2 -3] False
 ------------------------------
-M: swap [drop drop] [[uncons] dip rolldown swap dup rot i rot map] if
-Stack: [1 2 3 4] False [2 *] 
-------------------------------
-M: [drop drop] [[uncons] dip rolldown swap dup rot i rot map] if
-Stack: [1 2 3 4] [2 *] False
-------------------------------
-M: [[uncons] dip rolldown swap dup rot i rot map] if
-Stack: [1 2 3 4] [2 *] False [drop drop] 
+M: [uncons rot dup rot swap dup rot i [] [swap drop] if filter] if
+Stack: [0 >] [-1 2 -3] False [] 
 ------------------------------
 M: if
-Stack: [1 2 3 4] [2 *] False [drop drop] [[uncons] dip rolldown swap dup rot i rot map] 
+Stack: [0 >] [-1 2 -3] False [] [uncons rot dup rot swap dup rot i [] [swap drop] if filter] 
 ------------------------------
-M: [uncons] dip rolldown swap dup rot i rot map
-Stack: [1 2 3 4] [2 *] 
+M: uncons rot dup rot swap dup rot i [] [swap drop] if filter
+Stack: [0 >] [-1 2 -3] 
 ------------------------------
-M: dip rolldown swap dup rot i rot map
-Stack: [1 2 3 4] [2 *] [uncons] 
+M: dup first swap rest rot dup rot swap dup rot i [] [swap drop] if filter
+Stack: [0 >] [-1 2 -3] 
 ------------------------------
-M: uncons [2 *] rolldown swap dup rot i rot map
-Stack: [1 2 3 4] 
+M: first swap rest rot dup rot swap dup rot i [] [swap drop] if filter
+Stack: [0 >] [-1 2 -3] [-1 2 -3] 
 ------------------------------
-M: dup first swap rest [2 *] rolldown swap dup rot i rot map
-Stack: [1 2 3 4] 
+M: swap rest rot dup rot swap dup rot i [] [swap drop] if filter
+Stack: [0 >] [-1 2 -3] -1
 ------------------------------
-M: first swap rest [2 *] rolldown swap dup rot i rot map
-Stack: [1 2 3 4] [1 2 3 4] 
+M: rest rot dup rot swap dup rot i [] [swap drop] if filter
+Stack: [0 >] -1 [-1 2 -3] 
 ------------------------------
-M: swap rest [2 *] rolldown swap dup rot i rot map
-Stack: [1 2 3 4] 1
+M: rot dup rot swap dup rot i [] [swap drop] if filter
+Stack: [0 >] -1 [2 -3] 
 ------------------------------
-M: rest [2 *] rolldown swap dup rot i rot map
-Stack: 1 [1 2 3 4] 
+M: dup rot swap dup rot i [] [swap drop] if filter
+Stack: [2 -3] [0 >] -1
 ------------------------------
-M: [2 *] rolldown swap dup rot i rot map
-Stack: 1 [2 3 4] 
+M: rot swap dup rot i [] [swap drop] if filter
+Stack: [2 -3] [0 >] -1 -1
 ------------------------------
-M: rolldown swap dup rot i rot map
-Stack: 1 [2 3 4] [2 *] 
+M: swap dup rot i [] [swap drop] if filter
+Stack: [2 -3] -1 [0 >] -1
 ------------------------------
-M: swap dup rot i rot map
-Stack: [2 3 4] [2 *] 1
+M: dup rot i [] [swap drop] if filter
+Stack: [2 -3] -1 -1 [0 >] 
 ------------------------------
-M: dup rot i rot map
-Stack: [2 3 4] 1 [2 *] 
+M: rot i [] [swap drop] if filter
+Stack: [2 -3] -1 -1 [0 >] [0 >] 
 ------------------------------
-M: rot i rot map
-Stack: [2 3 4] 1 [2 *] [2 *] 
+M: i [] [swap drop] if filter
+Stack: [2 -3] -1 [0 >] -1 [0 >] 
 ------------------------------
-M: i rot map
-Stack: [2 3 4] [2 *] 1 [2 *] 
+M: 0 > [] [swap drop] if filter
+Stack: [2 -3] -1 [0 >] -1
 ------------------------------
-M: 2 * rot map
-Stack: [2 3 4] [2 *] 1
+M: > [] [swap drop] if filter
+Stack: [2 -3] -1 [0 >] -1 0
 ------------------------------
-M: * rot map
-Stack: [2 3 4] [2 *] 1 2
+M: [] [swap drop] if filter
+Stack: [2 -3] -1 [0 >] False
 ------------------------------
-M: rot map
-Stack: [2 3 4] [2 *] 2
+M: [swap drop] if filter
+Stack: [2 -3] -1 [0 >] False [] 
 ------------------------------
-M: map
-Stack: 2 [2 3 4] [2 *] 
+M: if filter
+Stack: [2 -3] -1 [0 >] False [] [swap drop] 
 ------------------------------
-M: is_empty_with_dip [drop drop] [[uncons] dip rolldown swap dup rot i rot map] if
-Stack: 2 [2 3 4] [2 *] 
+M: swap drop filter
+Stack: [2 -3] -1 [0 >] 
 ------------------------------
-M: [dup null] dip swap [drop drop] [[uncons] dip rolldown swap dup rot i rot map] if
-Stack: 2 [2 3 4] [2 *] 
+M: drop filter
+Stack: [2 -3] [0 >] -1
 ------------------------------
-M: dip swap [drop drop] [[uncons] dip rolldown swap dup rot i rot map] if
-Stack: 2 [2 3 4] [2 *] [dup null] 
+M: filter
+Stack: [2 -3] [0 >] 
 ------------------------------
-M: dup null [2 *] swap [drop drop] [[uncons] dip rolldown swap dup rot i rot map] if
-Stack: 2 [2 3 4] 
+M: is_empty_dip [] [uncons rot dup rot swap dup rot i [] [swap drop] if filter] if
+Stack: [2 -3] [0 >] 
 ------------------------------
-M: null [2 *] swap [drop drop] [[uncons] dip rolldown swap dup rot i rot map] if
-Stack: 2 [2 3 4] [2 3 4] 
+M: [dup null] dip swap [] [uncons rot dup rot swap dup rot i [] [swap drop] if filter] if
+Stack: [2 -3] [0 >] 
 ------------------------------
-M: [2 *] swap [drop drop] [[uncons] dip rolldown swap dup rot i rot map] if
-Stack: 2 [2 3 4] False
+M: dip swap [] [uncons rot dup rot swap dup rot i [] [swap drop] if filter] if
+Stack: [2 -3] [0 >] [dup null] 
 ------------------------------
-M: swap [drop drop] [[uncons] dip rolldown swap dup rot i rot map] if
-Stack: 2 [2 3 4] False [2 *] 
+M: dup null [0 >] swap [] [uncons rot dup rot swap dup rot i [] [swap drop] if filter] if
+Stack: [2 -3] 
 ------------------------------
-M: [drop drop] [[uncons] dip rolldown swap dup rot i rot map] if
-Stack: 2 [2 3 4] [2 *] False
+M: null [0 >] swap [] [uncons rot dup rot swap dup rot i [] [swap drop] if filter] if
+Stack: [2 -3] [2 -3] 
 ------------------------------
-M: [[uncons] dip rolldown swap dup rot i rot map] if
-Stack: 2 [2 3 4] [2 *] False [drop drop] 
+M: [0 >] swap [] [uncons rot dup rot swap dup rot i [] [swap drop] if filter] if
+Stack: [2 -3] False
 ------------------------------
-M: if
-Stack: 2 [2 3 4] [2 *] False [drop drop] [[uncons] dip rolldown swap dup rot i rot map] 
+M: swap [] [uncons rot dup rot swap dup rot i [] [swap drop] if filter] if
+Stack: [2 -3] False [0 >] 
 ------------------------------
-M: [uncons] dip rolldown swap dup rot i rot map
-Stack: 2 [2 3 4] [2 *] 
+M: [] [uncons rot dup rot swap dup rot i [] [swap drop] if filter] if
+Stack: [2 -3] [0 >] False
 ------------------------------
-M: dip rolldown swap dup rot i rot map
-Stack: 2 [2 3 4] [2 *] [uncons] 
-------------------------------
-M: uncons [2 *] rolldown swap dup rot i rot map
-Stack: 2 [2 3 4] 
-------------------------------
-M: dup first swap rest [2 *] rolldown swap dup rot i rot map
-Stack: 2 [2 3 4] 
-------------------------------
-M: first swap rest [2 *] rolldown swap dup rot i rot map
-Stack: 2 [2 3 4] [2 3 4] 
-------------------------------
-M: swap rest [2 *] rolldown swap dup rot i rot map
-Stack: 2 [2 3 4] 2
-------------------------------
-M: rest [2 *] rolldown swap dup rot i rot map
-Stack: 2 2 [2 3 4] 
-------------------------------
-M: [2 *] rolldown swap dup rot i rot map
-Stack: 2 2 [3 4] 
-------------------------------
-M: rolldown swap dup rot i rot map
-Stack: 2 2 [3 4] [2 *] 
-------------------------------
-M: swap dup rot i rot map
-Stack: 2 [3 4] [2 *] 2
-------------------------------
-M: dup rot i rot map
-Stack: 2 [3 4] 2 [2 *] 
-------------------------------
-M: rot i rot map
-Stack: 2 [3 4] 2 [2 *] [2 *] 
-------------------------------
-M: i rot map
-Stack: 2 [3 4] [2 *] 2 [2 *] 
-------------------------------
-M: 2 * rot map
-Stack: 2 [3 4] [2 *] 2
-------------------------------
-M: * rot map
-Stack: 2 [3 4] [2 *] 2 2
-------------------------------
-M: rot map
-Stack: 2 [3 4] [2 *] 4
-------------------------------
-M: map
-Stack: 2 4 [3 4] [2 *] 
-------------------------------
-M: is_empty_with_dip [drop drop] [[uncons] dip rolldown swap dup rot i rot map] if
-Stack: 2 4 [3 4] [2 *] 
-------------------------------
-M: [dup null] dip swap [drop drop] [[uncons] dip rolldown swap dup rot i rot map] if
-Stack: 2 4 [3 4] [2 *] 
-------------------------------
-M: dip swap [drop drop] [[uncons] dip rolldown swap dup rot i rot map] if
-Stack: 2 4 [3 4] [2 *] [dup null] 
-------------------------------
-M: dup null [2 *] swap [drop drop] [[uncons] dip rolldown swap dup rot i rot map] if
-Stack: 2 4 [3 4] 
-------------------------------
-M: null [2 *] swap [drop drop] [[uncons] dip rolldown swap dup rot i rot map] if
-Stack: 2 4 [3 4] [3 4] 
-------------------------------
-M: [2 *] swap [drop drop] [[uncons] dip rolldown swap dup rot i rot map] if
-Stack: 2 4 [3 4] False
-------------------------------
-M: swap [drop drop] [[uncons] dip rolldown swap dup rot i rot map] if
-Stack: 2 4 [3 4] False [2 *] 
-------------------------------
-M: [drop drop] [[uncons] dip rolldown swap dup rot i rot map] if
-Stack: 2 4 [3 4] [2 *] False
-------------------------------
-M: [[uncons] dip rolldown swap dup rot i rot map] if
-Stack: 2 4 [3 4] [2 *] False [drop drop] 
+M: [uncons rot dup rot swap dup rot i [] [swap drop] if filter] if
+Stack: [2 -3] [0 >] False [] 
 ------------------------------
 M: if
-Stack: 2 4 [3 4] [2 *] False [drop drop] [[uncons] dip rolldown swap dup rot i rot map] 
+Stack: [2 -3] [0 >] False [] [uncons rot dup rot swap dup rot i [] [swap drop] if filter] 
 ------------------------------
-M: [uncons] dip rolldown swap dup rot i rot map
-Stack: 2 4 [3 4] [2 *] 
+M: uncons rot dup rot swap dup rot i [] [swap drop] if filter
+Stack: [2 -3] [0 >] 
 ------------------------------
-M: dip rolldown swap dup rot i rot map
-Stack: 2 4 [3 4] [2 *] [uncons] 
+M: dup first swap rest rot dup rot swap dup rot i [] [swap drop] if filter
+Stack: [2 -3] [0 >] 
 ------------------------------
-M: uncons [2 *] rolldown swap dup rot i rot map
-Stack: 2 4 [3 4] 
+M: first swap rest rot dup rot swap dup rot i [] [swap drop] if filter
+Stack: [2 -3] [0 >] [0 >] 
 ------------------------------
-M: dup first swap rest [2 *] rolldown swap dup rot i rot map
-Stack: 2 4 [3 4] 
+M: swap rest rot dup rot swap dup rot i [] [swap drop] if filter
+Stack: [2 -3] [0 >] 0
 ------------------------------
-M: first swap rest [2 *] rolldown swap dup rot i rot map
-Stack: 2 4 [3 4] [3 4] 
+M: rest rot dup rot swap dup rot i [] [swap drop] if filter
+Stack: [2 -3] 0 [0 >] 
 ------------------------------
-M: swap rest [2 *] rolldown swap dup rot i rot map
-Stack: 2 4 [3 4] 3
+M: rot dup rot swap dup rot i [] [swap drop] if filter
+Stack: [2 -3] 0 [>] 
 ------------------------------
-M: rest [2 *] rolldown swap dup rot i rot map
-Stack: 2 4 3 [3 4] 
+M: dup rot swap dup rot i [] [swap drop] if filter
+Stack: [>] [2 -3] 0
 ------------------------------
-M: [2 *] rolldown swap dup rot i rot map
-Stack: 2 4 3 [4] 
+M: rot swap dup rot i [] [swap drop] if filter
+Stack: [>] [2 -3] 0 0
 ------------------------------
-M: rolldown swap dup rot i rot map
-Stack: 2 4 3 [4] [2 *] 
+M: swap dup rot i [] [swap drop] if filter
+Stack: [>] 0 [2 -3] 0
 ------------------------------
-M: swap dup rot i rot map
-Stack: 2 4 [4] [2 *] 3
+M: dup rot i [] [swap drop] if filter
+Stack: [>] 0 0 [2 -3] 
 ------------------------------
-M: dup rot i rot map
-Stack: 2 4 [4] 3 [2 *] 
+M: rot i [] [swap drop] if filter
+Stack: [>] 0 0 [2 -3] [2 -3] 
 ------------------------------
-M: rot i rot map
-Stack: 2 4 [4] 3 [2 *] [2 *] 
+M: i [] [swap drop] if filter
+Stack: [>] 0 [2 -3] 0 [2 -3] 
 ------------------------------
-M: i rot map
-Stack: 2 4 [4] [2 *] 3 [2 *] 
+M: 2 -3 [] [swap drop] if filter
+Stack: [>] 0 [2 -3] 0
 ------------------------------
-M: 2 * rot map
-Stack: 2 4 [4] [2 *] 3
+M: -3 [] [swap drop] if filter
+Stack: [>] 0 [2 -3] 0 2
 ------------------------------
-M: * rot map
-Stack: 2 4 [4] [2 *] 3 2
+M: [] [swap drop] if filter
+Stack: [>] 0 [2 -3] 0 2 -3
 ------------------------------
-M: rot map
-Stack: 2 4 [4] [2 *] 6
+M: [swap drop] if filter
+Stack: [>] 0 [2 -3] 0 2 -3 [] 
 ------------------------------
-M: map
-Stack: 2 4 6 [4] [2 *] 
+M: if filter
+Stack: [>] 0 [2 -3] 0 2 -3 [] [swap drop] 
 ------------------------------
-M: is_empty_with_dip [drop drop] [[uncons] dip rolldown swap dup rot i rot map] if
-Stack: 2 4 6 [4] [2 *] 
+M: filter
+Stack: [>] 0 [2 -3] 0 2
 ------------------------------
-M: [dup null] dip swap [drop drop] [[uncons] dip rolldown swap dup rot i rot map] if
-Stack: 2 4 6 [4] [2 *] 
+M: is_empty_dip [] [uncons rot dup rot swap dup rot i [] [swap drop] if filter] if
+Stack: [>] 0 [2 -3] 0 2
 ------------------------------
-M: dip swap [drop drop] [[uncons] dip rolldown swap dup rot i rot map] if
-Stack: 2 4 6 [4] [2 *] [dup null] 
+M: [dup null] dip swap [] [uncons rot dup rot swap dup rot i [] [swap drop] if filter] if
+Stack: [>] 0 [2 -3] 0 2
 ------------------------------
-M: dup null [2 *] swap [drop drop] [[uncons] dip rolldown swap dup rot i rot map] if
-Stack: 2 4 6 [4] 
+M: dip swap [] [uncons rot dup rot swap dup rot i [] [swap drop] if filter] if
+Stack: [>] 0 [2 -3] 0 2 [dup null] 
 ------------------------------
-M: null [2 *] swap [drop drop] [[uncons] dip rolldown swap dup rot i rot map] if
-Stack: 2 4 6 [4] [4] 
+M: dup null 2 swap [] [uncons rot dup rot swap dup rot i [] [swap drop] if filter] if
+Stack: [>] 0 [2 -3] 0
 ------------------------------
-M: [2 *] swap [drop drop] [[uncons] dip rolldown swap dup rot i rot map] if
-Stack: 2 4 6 [4] False
+M: null 2 swap [] [uncons rot dup rot swap dup rot i [] [swap drop] if filter] if
+Stack: [>] 0 [2 -3] 0 0
 ------------------------------
-M: swap [drop drop] [[uncons] dip rolldown swap dup rot i rot map] if
-Stack: 2 4 6 [4] False [2 *] 
-------------------------------
-M: [drop drop] [[uncons] dip rolldown swap dup rot i rot map] if
-Stack: 2 4 6 [4] [2 *] False
-------------------------------
-M: [[uncons] dip rolldown swap dup rot i rot map] if
-Stack: 2 4 6 [4] [2 *] False [drop drop] 
-------------------------------
-M: if
-Stack: 2 4 6 [4] [2 *] False [drop drop] [[uncons] dip rolldown swap dup rot i rot map] 
-------------------------------
-M: [uncons] dip rolldown swap dup rot i rot map
-Stack: 2 4 6 [4] [2 *] 
-------------------------------
-M: dip rolldown swap dup rot i rot map
-Stack: 2 4 6 [4] [2 *] [uncons] 
-------------------------------
-M: uncons [2 *] rolldown swap dup rot i rot map
-Stack: 2 4 6 [4] 
-------------------------------
-M: dup first swap rest [2 *] rolldown swap dup rot i rot map
-Stack: 2 4 6 [4] 
-------------------------------
-M: first swap rest [2 *] rolldown swap dup rot i rot map
-Stack: 2 4 6 [4] [4] 
-------------------------------
-M: swap rest [2 *] rolldown swap dup rot i rot map
-Stack: 2 4 6 [4] 4
-------------------------------
-M: rest [2 *] rolldown swap dup rot i rot map
-Stack: 2 4 6 4 [4] 
-------------------------------
-M: [2 *] rolldown swap dup rot i rot map
-Stack: 2 4 6 4 [] 
-------------------------------
-M: rolldown swap dup rot i rot map
-Stack: 2 4 6 4 [] [2 *] 
-------------------------------
-M: swap dup rot i rot map
-Stack: 2 4 6 [] [2 *] 4
-------------------------------
-M: dup rot i rot map
-Stack: 2 4 6 [] 4 [2 *] 
-------------------------------
-M: rot i rot map
-Stack: 2 4 6 [] 4 [2 *] [2 *] 
-------------------------------
-M: i rot map
-Stack: 2 4 6 [] [2 *] 4 [2 *] 
-------------------------------
-M: 2 * rot map
-Stack: 2 4 6 [] [2 *] 4
-------------------------------
-M: * rot map
-Stack: 2 4 6 [] [2 *] 4 2
-------------------------------
-M: rot map
-Stack: 2 4 6 [] [2 *] 8
-------------------------------
-M: map
-Stack: 2 4 6 8 [] [2 *] 
-------------------------------
-M: is_empty_with_dip [drop drop] [[uncons] dip rolldown swap dup rot i rot map] if
-Stack: 2 4 6 8 [] [2 *] 
-------------------------------
-M: [dup null] dip swap [drop drop] [[uncons] dip rolldown swap dup rot i rot map] if
-Stack: 2 4 6 8 [] [2 *] 
-------------------------------
-M: dip swap [drop drop] [[uncons] dip rolldown swap dup rot i rot map] if
-Stack: 2 4 6 8 [] [2 *] [dup null] 
-------------------------------
-M: dup null [2 *] swap [drop drop] [[uncons] dip rolldown swap dup rot i rot map] if
-Stack: 2 4 6 8 [] 
-------------------------------
-M: null [2 *] swap [drop drop] [[uncons] dip rolldown swap dup rot i rot map] if
-Stack: 2 4 6 8 [] [] 
-------------------------------
-M: [2 *] swap [drop drop] [[uncons] dip rolldown swap dup rot i rot map] if
-Stack: 2 4 6 8 [] True
-------------------------------
-M: swap [drop drop] [[uncons] dip rolldown swap dup rot i rot map] if
-Stack: 2 4 6 8 [] True [2 *] 
-------------------------------
-M: [drop drop] [[uncons] dip rolldown swap dup rot i rot map] if
-Stack: 2 4 6 8 [] [2 *] True
-------------------------------
-M: [[uncons] dip rolldown swap dup rot i rot map] if
-Stack: 2 4 6 8 [] [2 *] True [drop drop] 
-------------------------------
-M: if
-Stack: 2 4 6 8 [] [2 *] True [drop drop] [[uncons] dip rolldown swap dup rot i rot map] 
-------------------------------
-M: drop drop
-Stack: 2 4 6 8 [] [2 *] 
-------------------------------
-M: drop
-Stack: 2 4 6 8 [] 
-------------------------------
-M: 
-Stack: 2 4 6 8
-------------------------------
-[2, 4, 6, 8]
+Incorrect type on stack, expected <class 'list'>, received <class 'int'>

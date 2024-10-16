@@ -110,8 +110,12 @@ def perform_operation(oper: str,stack: [], m: [], func_map: {}):
         stack.append(x)
     elif oper == 'i':
         m.pop(0)
+        check_if_enough_stack(stack, 2, oper)
+        check_valid_types(stack, [list])
         l = stack.pop()
-        # check_valid_types(stack, [list])
+        if len(l) < 1:
+             print(f"Not enough elements inside array for rest operation. Stack: {stack}")
+             exit(1)
         m[:0] = l
     elif oper in func_map:
         m.pop(0)

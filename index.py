@@ -24,7 +24,7 @@ def is_number(text):
     """checks if string is number"""
     if not isinstance(text, str):
         return False
-    number_regex = r'^[0-9]+$'
+    number_regex = r'^-?[0-9]+$'
     return re.match(number_regex, text) is not None
 
 # todo to parser.py

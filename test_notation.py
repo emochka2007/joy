@@ -35,3 +35,13 @@ assert(polish_notation(match_brackets(tokenizer("[last dup rest null [first][res
 
 #[conc is_empty [swap drop][swap uncons rot rot conc cons] if ] def [1 2 3] [4 5 6] conc
 #[conc is_empty [swap drop][swap uncons rolldown conc cons] if ] def [1 2 3] [4 5 6] conc
+
+#15
+#[conc is_empty [stop][swap uncons rot rot conc cons] if] def [1 2 3] [4 5 6] conc
+#[conc swap uncons rot rot] def [1 2 3] [4 5 6] conc
+
+#[conc_with_dip is_empty [swap drop][[uncons] dip conc_with_dip cons] if ] def [1 2 3] [4 5 6] conc_with_dip
+#[conc is_empty [swap drop][swap uncons rot rot conc cons] if ] def [1 2 3] [4 5 6] conc
+#[conc is_empty [swap drop][swap uncons rolldown conc cons] if ] def [1 2 3] [4 5 6] conc
+# [map is_empty_with_dip [drop] [[uncons] dip rolldown swap dup rot i rot map cons] if ] def [1 2 3 4] [2 *] map
+#[is_empty swap dup null rot swap rot rot] def
