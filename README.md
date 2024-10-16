@@ -1,1 +1,3 @@
 # joy
+
+![README](./about.png)

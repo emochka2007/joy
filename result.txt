@@ -1,433 +1,202 @@
-M: def [uncons dup first swap rest] def [filter dup null [[drop] dip] [[dup] dip uncons [dup rolldown i rolldown swap] dip swap [filter cons] [filter [drop] dip] if] if] def [0 >] [1 -2 3 -4] filter
+M: def [uncons dup first swap rest] def [sum dup rest null [first] [uncons sum +] if] def [1 2 3 4 5] sum
 Stack: [is_empty_dip [dup null] dip swap] 
 ------------------------------
-M: [uncons dup first swap rest] def [filter dup null [[drop] dip] [[dup] dip uncons [dup rolldown i rolldown swap] dip swap [filter cons] [filter [drop] dip] if] if] def [0 >] [1 -2 3 -4] filter
+M: [uncons dup first swap rest] def [sum dup rest null [first] [uncons sum +] if] def [1 2 3 4 5] sum
 Stack: 
 ------------------------------
-M: def [filter dup null [[drop] dip] [[dup] dip uncons [dup rolldown i rolldown swap] dip swap [filter cons] [filter [drop] dip] if] if] def [0 >] [1 -2 3 -4] filter
+M: def [sum dup rest null [first] [uncons sum +] if] def [1 2 3 4 5] sum
 Stack: [uncons dup first swap rest] 
 ------------------------------
-M: [filter dup null [[drop] dip] [[dup] dip uncons [dup rolldown i rolldown swap] dip swap [filter cons] [filter [drop] dip] if] if] def [0 >] [1 -2 3 -4] filter
+M: [sum dup rest null [first] [uncons sum +] if] def [1 2 3 4 5] sum
 Stack: 
 ------------------------------
-M: def [0 >] [1 -2 3 -4] filter
-Stack: [filter dup null [[drop] dip] [[dup] dip uncons [dup rolldown i rolldown swap] dip swap [filter cons] [filter [drop] dip] if] if] 
+M: def [1 2 3 4 5] sum
+Stack: [sum dup rest null [first] [uncons sum +] if] 
 ------------------------------
-M: [0 >] [1 -2 3 -4] filter
+M: [1 2 3 4 5] sum
 Stack: 
 ------------------------------
-M: [1 -2 3 -4] filter
-Stack: [0 >] 
+M: sum
+Stack: [1 2 3 4 5] 
 ------------------------------
-M: filter
-Stack: [0 >] [1 -2 3 -4] 
+M: dup rest null [first] [uncons sum +] if
+Stack: [1 2 3 4 5] 
 ------------------------------
-M: dup null [[drop] dip] [[dup] dip uncons [dup rolldown i rolldown swap] dip swap [filter cons] [filter [drop] dip] if] if
-Stack: [0 >] [1 -2 3 -4] 
+M: rest null [first] [uncons sum +] if
+Stack: [1 2 3 4 5] [1 2 3 4 5] 
 ------------------------------
-M: null [[drop] dip] [[dup] dip uncons [dup rolldown i rolldown swap] dip swap [filter cons] [filter [drop] dip] if] if
-Stack: [0 >] [1 -2 3 -4] [1 -2 3 -4] 
+M: null [first] [uncons sum +] if
+Stack: [1 2 3 4 5] [2 3 4 5] 
 ------------------------------
-M: [[drop] dip] [[dup] dip uncons [dup rolldown i rolldown swap] dip swap [filter cons] [filter [drop] dip] if] if
-Stack: [0 >] [1 -2 3 -4] False
+M: [first] [uncons sum +] if
+Stack: [1 2 3 4 5] False
 ------------------------------
-M: [[dup] dip uncons [dup rolldown i rolldown swap] dip swap [filter cons] [filter [drop] dip] if] if
-Stack: [0 >] [1 -2 3 -4] False [[drop] dip] 
-------------------------------
-M: if
-Stack: [0 >] [1 -2 3 -4] False [[drop] dip] [[dup] dip uncons [dup rolldown i rolldown swap] dip swap [filter cons] [filter [drop] dip] if] 
-------------------------------
-M: [dup] dip uncons [dup rolldown i rolldown swap] dip swap [filter cons] [filter [drop] dip] if
-Stack: [0 >] [1 -2 3 -4] 
-------------------------------
-M: dip uncons [dup rolldown i rolldown swap] dip swap [filter cons] [filter [drop] dip] if
-Stack: [0 >] [1 -2 3 -4] [dup] 
-------------------------------
-M: dup [1 -2 3 -4] uncons [dup rolldown i rolldown swap] dip swap [filter cons] [filter [drop] dip] if
-Stack: [0 >] 
-------------------------------
-M: [1 -2 3 -4] uncons [dup rolldown i rolldown swap] dip swap [filter cons] [filter [drop] dip] if
-Stack: [0 >] [0 >] 
-------------------------------
-M: uncons [dup rolldown i rolldown swap] dip swap [filter cons] [filter [drop] dip] if
-Stack: [0 >] [0 >] [1 -2 3 -4] 
-------------------------------
-M: dup first swap rest [dup rolldown i rolldown swap] dip swap [filter cons] [filter [drop] dip] if
-Stack: [0 >] [0 >] [1 -2 3 -4] 
-------------------------------
-M: first swap rest [dup rolldown i rolldown swap] dip swap [filter cons] [filter [drop] dip] if
-Stack: [0 >] [0 >] [1 -2 3 -4] [1 -2 3 -4] 
-------------------------------
-M: swap rest [dup rolldown i rolldown swap] dip swap [filter cons] [filter [drop] dip] if
-Stack: [0 >] [0 >] [1 -2 3 -4] 1
-------------------------------
-M: rest [dup rolldown i rolldown swap] dip swap [filter cons] [filter [drop] dip] if
-Stack: [0 >] [0 >] 1 [1 -2 3 -4] 
-------------------------------
-M: [dup rolldown i rolldown swap] dip swap [filter cons] [filter [drop] dip] if
-Stack: [0 >] [0 >] 1 [-2 3 -4] 
-------------------------------
-M: dip swap [filter cons] [filter [drop] dip] if
-Stack: [0 >] [0 >] 1 [-2 3 -4] [dup rolldown i rolldown swap] 
-------------------------------
-M: dup rolldown i rolldown swap [-2 3 -4] swap [filter cons] [filter [drop] dip] if
-Stack: [0 >] [0 >] 1
-------------------------------
-M: rolldown i rolldown swap [-2 3 -4] swap [filter cons] [filter [drop] dip] if
-Stack: [0 >] [0 >] 1 1
-------------------------------
-M: i rolldown swap [-2 3 -4] swap [filter cons] [filter [drop] dip] if
-Stack: [0 >] 1 1 [0 >] 
-------------------------------
-M: 0 > rolldown swap [-2 3 -4] swap [filter cons] [filter [drop] dip] if
-Stack: [0 >] 1 1
-------------------------------
-M: > rolldown swap [-2 3 -4] swap [filter cons] [filter [drop] dip] if
-Stack: [0 >] 1 1 0
-------------------------------
-M: rolldown swap [-2 3 -4] swap [filter cons] [filter [drop] dip] if
-Stack: [0 >] 1 True
-------------------------------
-M: swap [-2 3 -4] swap [filter cons] [filter [drop] dip] if
-Stack: 1 True [0 >] 
-------------------------------
-M: [-2 3 -4] swap [filter cons] [filter [drop] dip] if
-Stack: 1 [0 >] True
-------------------------------
-M: swap [filter cons] [filter [drop] dip] if
-Stack: 1 [0 >] True [-2 3 -4] 
-------------------------------
-M: [filter cons] [filter [drop] dip] if
-Stack: 1 [0 >] [-2 3 -4] True
-------------------------------
-M: [filter [drop] dip] if
-Stack: 1 [0 >] [-2 3 -4] True [filter cons] 
+M: [uncons sum +] if
+Stack: [1 2 3 4 5] False [first] 
 ------------------------------
 M: if
-Stack: 1 [0 >] [-2 3 -4] True [filter cons] [filter [drop] dip] 
+Stack: [1 2 3 4 5] False [first] [uncons sum +] 
 ------------------------------
-M: filter cons
-Stack: 1 [0 >] [-2 3 -4] 
+M: uncons sum +
+Stack: [1 2 3 4 5] 
 ------------------------------
-M: dup null [[drop] dip] [[dup] dip uncons [dup rolldown i rolldown swap] dip swap [filter cons] [filter [drop] dip] if] if cons
-Stack: 1 [0 >] [-2 3 -4] 
+M: dup first swap rest sum +
+Stack: [1 2 3 4 5] 
 ------------------------------
-M: null [[drop] dip] [[dup] dip uncons [dup rolldown i rolldown swap] dip swap [filter cons] [filter [drop] dip] if] if cons
-Stack: 1 [0 >] [-2 3 -4] [-2 3 -4] 
+M: first swap rest sum +
+Stack: [1 2 3 4 5] [1 2 3 4 5] 
 ------------------------------
-M: [[drop] dip] [[dup] dip uncons [dup rolldown i rolldown swap] dip swap [filter cons] [filter [drop] dip] if] if cons
-Stack: 1 [0 >] [-2 3 -4] False
+M: swap rest sum +
+Stack: [1 2 3 4 5] 1
 ------------------------------
-M: [[dup] dip uncons [dup rolldown i rolldown swap] dip swap [filter cons] [filter [drop] dip] if] if cons
-Stack: 1 [0 >] [-2 3 -4] False [[drop] dip] 
+M: rest sum +
+Stack: 1 [1 2 3 4 5] 
 ------------------------------
-M: if cons
-Stack: 1 [0 >] [-2 3 -4] False [[drop] dip] [[dup] dip uncons [dup rolldown i rolldown swap] dip swap [filter cons] [filter [drop] dip] if] 
+M: sum +
+Stack: 1 [2 3 4 5] 
 ------------------------------
-M: [dup] dip uncons [dup rolldown i rolldown swap] dip swap [filter cons] [filter [drop] dip] if cons
-Stack: 1 [0 >] [-2 3 -4] 
+M: dup rest null [first] [uncons sum +] if +
+Stack: 1 [2 3 4 5] 
 ------------------------------
-M: dip uncons [dup rolldown i rolldown swap] dip swap [filter cons] [filter [drop] dip] if cons
-Stack: 1 [0 >] [-2 3 -4] [dup] 
+M: rest null [first] [uncons sum +] if +
+Stack: 1 [2 3 4 5] [2 3 4 5] 
 ------------------------------
-M: dup [-2 3 -4] uncons [dup rolldown i rolldown swap] dip swap [filter cons] [filter [drop] dip] if cons
-Stack: 1 [0 >] 
+M: null [first] [uncons sum +] if +
+Stack: 1 [2 3 4 5] [3 4 5] 
 ------------------------------
-M: [-2 3 -4] uncons [dup rolldown i rolldown swap] dip swap [filter cons] [filter [drop] dip] if cons
-Stack: 1 [0 >] [0 >] 
+M: [first] [uncons sum +] if +
+Stack: 1 [2 3 4 5] False
 ------------------------------
-M: uncons [dup rolldown i rolldown swap] dip swap [filter cons] [filter [drop] dip] if cons
-Stack: 1 [0 >] [0 >] [-2 3 -4] 
+M: [uncons sum +] if +
+Stack: 1 [2 3 4 5] False [first] 
 ------------------------------
-M: dup first swap rest [dup rolldown i rolldown swap] dip swap [filter cons] [filter [drop] dip] if cons
-Stack: 1 [0 >] [0 >] [-2 3 -4] 
+M: if +
+Stack: 1 [2 3 4 5] False [first] [uncons sum +] 
 ------------------------------
-M: first swap rest [dup rolldown i rolldown swap] dip swap [filter cons] [filter [drop] dip] if cons
-Stack: 1 [0 >] [0 >] [-2 3 -4] [-2 3 -4] 
+M: uncons sum + +
+Stack: 1 [2 3 4 5] 
 ------------------------------
-M: swap rest [dup rolldown i rolldown swap] dip swap [filter cons] [filter [drop] dip] if cons
-Stack: 1 [0 >] [0 >] [-2 3 -4] -2
+M: dup first swap rest sum + +
+Stack: 1 [2 3 4 5] 
 ------------------------------
-M: rest [dup rolldown i rolldown swap] dip swap [filter cons] [filter [drop] dip] if cons
-Stack: 1 [0 >] [0 >] -2 [-2 3 -4] 
+M: first swap rest sum + +
+Stack: 1 [2 3 4 5] [2 3 4 5] 
 ------------------------------
-M: [dup rolldown i rolldown swap] dip swap [filter cons] [filter [drop] dip] if cons
-Stack: 1 [0 >] [0 >] -2 [3 -4] 
+M: swap rest sum + +
+Stack: 1 [2 3 4 5] 2
 ------------------------------
-M: dip swap [filter cons] [filter [drop] dip] if cons
-Stack: 1 [0 >] [0 >] -2 [3 -4] [dup rolldown i rolldown swap] 
+M: rest sum + +
+Stack: 1 2 [2 3 4 5] 
 ------------------------------
-M: dup rolldown i rolldown swap [3 -4] swap [filter cons] [filter [drop] dip] if cons
-Stack: 1 [0 >] [0 >] -2
+M: sum + +
+Stack: 1 2 [3 4 5] 
 ------------------------------
-M: rolldown i rolldown swap [3 -4] swap [filter cons] [filter [drop] dip] if cons
-Stack: 1 [0 >] [0 >] -2 -2
+M: dup rest null [first] [uncons sum +] if + +
+Stack: 1 2 [3 4 5] 
 ------------------------------
-M: i rolldown swap [3 -4] swap [filter cons] [filter [drop] dip] if cons
-Stack: 1 [0 >] -2 -2 [0 >] 
+M: rest null [first] [uncons sum +] if + +
+Stack: 1 2 [3 4 5] [3 4 5] 
 ------------------------------
-M: 0 > rolldown swap [3 -4] swap [filter cons] [filter [drop] dip] if cons
-Stack: 1 [0 >] -2 -2
+M: null [first] [uncons sum +] if + +
+Stack: 1 2 [3 4 5] [4 5] 
 ------------------------------
-M: > rolldown swap [3 -4] swap [filter cons] [filter [drop] dip] if cons
-Stack: 1 [0 >] -2 -2 0
+M: [first] [uncons sum +] if + +
+Stack: 1 2 [3 4 5] False
 ------------------------------
-M: rolldown swap [3 -4] swap [filter cons] [filter [drop] dip] if cons
-Stack: 1 [0 >] -2 False
+M: [uncons sum +] if + +
+Stack: 1 2 [3 4 5] False [first] 
 ------------------------------
-M: swap [3 -4] swap [filter cons] [filter [drop] dip] if cons
-Stack: 1 -2 False [0 >] 
+M: if + +
+Stack: 1 2 [3 4 5] False [first] [uncons sum +] 
 ------------------------------
-M: [3 -4] swap [filter cons] [filter [drop] dip] if cons
-Stack: 1 -2 [0 >] False
+M: uncons sum + + +
+Stack: 1 2 [3 4 5] 
 ------------------------------
-M: swap [filter cons] [filter [drop] dip] if cons
-Stack: 1 -2 [0 >] False [3 -4] 
+M: dup first swap rest sum + + +
+Stack: 1 2 [3 4 5] 
 ------------------------------
-M: [filter cons] [filter [drop] dip] if cons
-Stack: 1 -2 [0 >] [3 -4] False
+M: first swap rest sum + + +
+Stack: 1 2 [3 4 5] [3 4 5] 
 ------------------------------
-M: [filter [drop] dip] if cons
-Stack: 1 -2 [0 >] [3 -4] False [filter cons] 
+M: swap rest sum + + +
+Stack: 1 2 [3 4 5] 3
 ------------------------------
-M: if cons
-Stack: 1 -2 [0 >] [3 -4] False [filter cons] [filter [drop] dip] 
+M: rest sum + + +
+Stack: 1 2 3 [3 4 5] 
 ------------------------------
-M: filter [drop] dip cons
-Stack: 1 -2 [0 >] [3 -4] 
+M: sum + + +
+Stack: 1 2 3 [4 5] 
 ------------------------------
-M: dup null [[drop] dip] [[dup] dip uncons [dup rolldown i rolldown swap] dip swap [filter cons] [filter [drop] dip] if] if [drop] dip cons
-Stack: 1 -2 [0 >] [3 -4] 
+M: dup rest null [first] [uncons sum +] if + + +
+Stack: 1 2 3 [4 5] 
 ------------------------------
-M: null [[drop] dip] [[dup] dip uncons [dup rolldown i rolldown swap] dip swap [filter cons] [filter [drop] dip] if] if [drop] dip cons
-Stack: 1 -2 [0 >] [3 -4] [3 -4] 
+M: rest null [first] [uncons sum +] if + + +
+Stack: 1 2 3 [4 5] [4 5] 
 ------------------------------
-M: [[drop] dip] [[dup] dip uncons [dup rolldown i rolldown swap] dip swap [filter cons] [filter [drop] dip] if] if [drop] dip cons
-Stack: 1 -2 [0 >] [3 -4] False
+M: null [first] [uncons sum +] if + + +
+Stack: 1 2 3 [4 5] [5] 
 ------------------------------
-M: [[dup] dip uncons [dup rolldown i rolldown swap] dip swap [filter cons] [filter [drop] dip] if] if [drop] dip cons
-Stack: 1 -2 [0 >] [3 -4] False [[drop] dip] 
+M: [first] [uncons sum +] if + + +
+Stack: 1 2 3 [4 5] False
 ------------------------------
-M: if [drop] dip cons
-Stack: 1 -2 [0 >] [3 -4] False [[drop] dip] [[dup] dip uncons [dup rolldown i rolldown swap] dip swap [filter cons] [filter [drop] dip] if] 
+M: [uncons sum +] if + + +
+Stack: 1 2 3 [4 5] False [first] 
 ------------------------------
-M: [dup] dip uncons [dup rolldown i rolldown swap] dip swap [filter cons] [filter [drop] dip] if [drop] dip cons
-Stack: 1 -2 [0 >] [3 -4] 
+M: if + + +
+Stack: 1 2 3 [4 5] False [first] [uncons sum +] 
 ------------------------------
-M: dip uncons [dup rolldown i rolldown swap] dip swap [filter cons] [filter [drop] dip] if [drop] dip cons
-Stack: 1 -2 [0 >] [3 -4] [dup] 
+M: uncons sum + + + +
+Stack: 1 2 3 [4 5] 
 ------------------------------
-M: dup [3 -4] uncons [dup rolldown i rolldown swap] dip swap [filter cons] [filter [drop] dip] if [drop] dip cons
-Stack: 1 -2 [0 >] 
+M: dup first swap rest sum + + + +
+Stack: 1 2 3 [4 5] 
 ------------------------------
-M: [3 -4] uncons [dup rolldown i rolldown swap] dip swap [filter cons] [filter [drop] dip] if [drop] dip cons
-Stack: 1 -2 [0 >] [0 >] 
+M: first swap rest sum + + + +
+Stack: 1 2 3 [4 5] [4 5] 
 ------------------------------
-M: uncons [dup rolldown i rolldown swap] dip swap [filter cons] [filter [drop] dip] if [drop] dip cons
-Stack: 1 -2 [0 >] [0 >] [3 -4] 
+M: swap rest sum + + + +
+Stack: 1 2 3 [4 5] 4
 ------------------------------
-M: dup first swap rest [dup rolldown i rolldown swap] dip swap [filter cons] [filter [drop] dip] if [drop] dip cons
-Stack: 1 -2 [0 >] [0 >] [3 -4] 
+M: rest sum + + + +
+Stack: 1 2 3 4 [4 5] 
 ------------------------------
-M: first swap rest [dup rolldown i rolldown swap] dip swap [filter cons] [filter [drop] dip] if [drop] dip cons
-Stack: 1 -2 [0 >] [0 >] [3 -4] [3 -4] 
+M: sum + + + +
+Stack: 1 2 3 4 [5] 
 ------------------------------
-M: swap rest [dup rolldown i rolldown swap] dip swap [filter cons] [filter [drop] dip] if [drop] dip cons
-Stack: 1 -2 [0 >] [0 >] [3 -4] 3
+M: dup rest null [first] [uncons sum +] if + + + +
+Stack: 1 2 3 4 [5] 
 ------------------------------
-M: rest [dup rolldown i rolldown swap] dip swap [filter cons] [filter [drop] dip] if [drop] dip cons
-Stack: 1 -2 [0 >] [0 >] 3 [3 -4] 
+M: rest null [first] [uncons sum +] if + + + +
+Stack: 1 2 3 4 [5] [5] 
 ------------------------------
-M: [dup rolldown i rolldown swap] dip swap [filter cons] [filter [drop] dip] if [drop] dip cons
-Stack: 1 -2 [0 >] [0 >] 3 [-4] 
+M: null [first] [uncons sum +] if + + + +
+Stack: 1 2 3 4 [5] [] 
 ------------------------------
-M: dip swap [filter cons] [filter [drop] dip] if [drop] dip cons
-Stack: 1 -2 [0 >] [0 >] 3 [-4] [dup rolldown i rolldown swap] 
+M: [first] [uncons sum +] if + + + +
+Stack: 1 2 3 4 [5] True
 ------------------------------
-M: dup rolldown i rolldown swap [-4] swap [filter cons] [filter [drop] dip] if [drop] dip cons
-Stack: 1 -2 [0 >] [0 >] 3
+M: [uncons sum +] if + + + +
+Stack: 1 2 3 4 [5] True [first] 
 ------------------------------
-M: rolldown i rolldown swap [-4] swap [filter cons] [filter [drop] dip] if [drop] dip cons
-Stack: 1 -2 [0 >] [0 >] 3 3
+M: if + + + +
+Stack: 1 2 3 4 [5] True [first] [uncons sum +] 
 ------------------------------
-M: i rolldown swap [-4] swap [filter cons] [filter [drop] dip] if [drop] dip cons
-Stack: 1 -2 [0 >] 3 3 [0 >] 
+M: first + + + +
+Stack: 1 2 3 4 [5] 
 ------------------------------
-M: 0 > rolldown swap [-4] swap [filter cons] [filter [drop] dip] if [drop] dip cons
-Stack: 1 -2 [0 >] 3 3
+M: + + + +
+Stack: 1 2 3 4 5
 ------------------------------
-M: > rolldown swap [-4] swap [filter cons] [filter [drop] dip] if [drop] dip cons
-Stack: 1 -2 [0 >] 3 3 0
+M: + + +
+Stack: 1 2 3 9
 ------------------------------
-M: rolldown swap [-4] swap [filter cons] [filter [drop] dip] if [drop] dip cons
-Stack: 1 -2 [0 >] 3 True
+M: + +
+Stack: 1 2 12
 ------------------------------
-M: swap [-4] swap [filter cons] [filter [drop] dip] if [drop] dip cons
-Stack: 1 -2 3 True [0 >] 
-------------------------------
-M: [-4] swap [filter cons] [filter [drop] dip] if [drop] dip cons
-Stack: 1 -2 3 [0 >] True
-------------------------------
-M: swap [filter cons] [filter [drop] dip] if [drop] dip cons
-Stack: 1 -2 3 [0 >] True [-4] 
-------------------------------
-M: [filter cons] [filter [drop] dip] if [drop] dip cons
-Stack: 1 -2 3 [0 >] [-4] True
-------------------------------
-M: [filter [drop] dip] if [drop] dip cons
-Stack: 1 -2 3 [0 >] [-4] True [filter cons] 
-------------------------------
-M: if [drop] dip cons
-Stack: 1 -2 3 [0 >] [-4] True [filter cons] [filter [drop] dip] 
-------------------------------
-M: filter cons [drop] dip cons
-Stack: 1 -2 3 [0 >] [-4] 
-------------------------------
-M: dup null [[drop] dip] [[dup] dip uncons [dup rolldown i rolldown swap] dip swap [filter cons] [filter [drop] dip] if] if cons [drop] dip cons
-Stack: 1 -2 3 [0 >] [-4] 
-------------------------------
-M: null [[drop] dip] [[dup] dip uncons [dup rolldown i rolldown swap] dip swap [filter cons] [filter [drop] dip] if] if cons [drop] dip cons
-Stack: 1 -2 3 [0 >] [-4] [-4] 
-------------------------------
-M: [[drop] dip] [[dup] dip uncons [dup rolldown i rolldown swap] dip swap [filter cons] [filter [drop] dip] if] if cons [drop] dip cons
-Stack: 1 -2 3 [0 >] [-4] False
-------------------------------
-M: [[dup] dip uncons [dup rolldown i rolldown swap] dip swap [filter cons] [filter [drop] dip] if] if cons [drop] dip cons
-Stack: 1 -2 3 [0 >] [-4] False [[drop] dip] 
-------------------------------
-M: if cons [drop] dip cons
-Stack: 1 -2 3 [0 >] [-4] False [[drop] dip] [[dup] dip uncons [dup rolldown i rolldown swap] dip swap [filter cons] [filter [drop] dip] if] 
-------------------------------
-M: [dup] dip uncons [dup rolldown i rolldown swap] dip swap [filter cons] [filter [drop] dip] if cons [drop] dip cons
-Stack: 1 -2 3 [0 >] [-4] 
-------------------------------
-M: dip uncons [dup rolldown i rolldown swap] dip swap [filter cons] [filter [drop] dip] if cons [drop] dip cons
-Stack: 1 -2 3 [0 >] [-4] [dup] 
-------------------------------
-M: dup [-4] uncons [dup rolldown i rolldown swap] dip swap [filter cons] [filter [drop] dip] if cons [drop] dip cons
-Stack: 1 -2 3 [0 >] 
-------------------------------
-M: [-4] uncons [dup rolldown i rolldown swap] dip swap [filter cons] [filter [drop] dip] if cons [drop] dip cons
-Stack: 1 -2 3 [0 >] [0 >] 
-------------------------------
-M: uncons [dup rolldown i rolldown swap] dip swap [filter cons] [filter [drop] dip] if cons [drop] dip cons
-Stack: 1 -2 3 [0 >] [0 >] [-4] 
-------------------------------
-M: dup first swap rest [dup rolldown i rolldown swap] dip swap [filter cons] [filter [drop] dip] if cons [drop] dip cons
-Stack: 1 -2 3 [0 >] [0 >] [-4] 
-------------------------------
-M: first swap rest [dup rolldown i rolldown swap] dip swap [filter cons] [filter [drop] dip] if cons [drop] dip cons
-Stack: 1 -2 3 [0 >] [0 >] [-4] [-4] 
-------------------------------
-M: swap rest [dup rolldown i rolldown swap] dip swap [filter cons] [filter [drop] dip] if cons [drop] dip cons
-Stack: 1 -2 3 [0 >] [0 >] [-4] -4
-------------------------------
-M: rest [dup rolldown i rolldown swap] dip swap [filter cons] [filter [drop] dip] if cons [drop] dip cons
-Stack: 1 -2 3 [0 >] [0 >] -4 [-4] 
-------------------------------
-M: [dup rolldown i rolldown swap] dip swap [filter cons] [filter [drop] dip] if cons [drop] dip cons
-Stack: 1 -2 3 [0 >] [0 >] -4 [] 
-------------------------------
-M: dip swap [filter cons] [filter [drop] dip] if cons [drop] dip cons
-Stack: 1 -2 3 [0 >] [0 >] -4 [] [dup rolldown i rolldown swap] 
-------------------------------
-M: dup rolldown i rolldown swap [] swap [filter cons] [filter [drop] dip] if cons [drop] dip cons
-Stack: 1 -2 3 [0 >] [0 >] -4
-------------------------------
-M: rolldown i rolldown swap [] swap [filter cons] [filter [drop] dip] if cons [drop] dip cons
-Stack: 1 -2 3 [0 >] [0 >] -4 -4
-------------------------------
-M: i rolldown swap [] swap [filter cons] [filter [drop] dip] if cons [drop] dip cons
-Stack: 1 -2 3 [0 >] -4 -4 [0 >] 
-------------------------------
-M: 0 > rolldown swap [] swap [filter cons] [filter [drop] dip] if cons [drop] dip cons
-Stack: 1 -2 3 [0 >] -4 -4
-------------------------------
-M: > rolldown swap [] swap [filter cons] [filter [drop] dip] if cons [drop] dip cons
-Stack: 1 -2 3 [0 >] -4 -4 0
-------------------------------
-M: rolldown swap [] swap [filter cons] [filter [drop] dip] if cons [drop] dip cons
-Stack: 1 -2 3 [0 >] -4 False
-------------------------------
-M: swap [] swap [filter cons] [filter [drop] dip] if cons [drop] dip cons
-Stack: 1 -2 3 -4 False [0 >] 
-------------------------------
-M: [] swap [filter cons] [filter [drop] dip] if cons [drop] dip cons
-Stack: 1 -2 3 -4 [0 >] False
-------------------------------
-M: swap [filter cons] [filter [drop] dip] if cons [drop] dip cons
-Stack: 1 -2 3 -4 [0 >] False [] 
-------------------------------
-M: [filter cons] [filter [drop] dip] if cons [drop] dip cons
-Stack: 1 -2 3 -4 [0 >] [] False
-------------------------------
-M: [filter [drop] dip] if cons [drop] dip cons
-Stack: 1 -2 3 -4 [0 >] [] False [filter cons] 
-------------------------------
-M: if cons [drop] dip cons
-Stack: 1 -2 3 -4 [0 >] [] False [filter cons] [filter [drop] dip] 
-------------------------------
-M: filter [drop] dip cons [drop] dip cons
-Stack: 1 -2 3 -4 [0 >] [] 
-------------------------------
-M: dup null [[drop] dip] [[dup] dip uncons [dup rolldown i rolldown swap] dip swap [filter cons] [filter [drop] dip] if] if [drop] dip cons [drop] dip cons
-Stack: 1 -2 3 -4 [0 >] [] 
-------------------------------
-M: null [[drop] dip] [[dup] dip uncons [dup rolldown i rolldown swap] dip swap [filter cons] [filter [drop] dip] if] if [drop] dip cons [drop] dip cons
-Stack: 1 -2 3 -4 [0 >] [] [] 
-------------------------------
-M: [[drop] dip] [[dup] dip uncons [dup rolldown i rolldown swap] dip swap [filter cons] [filter [drop] dip] if] if [drop] dip cons [drop] dip cons
-Stack: 1 -2 3 -4 [0 >] [] True
-------------------------------
-M: [[dup] dip uncons [dup rolldown i rolldown swap] dip swap [filter cons] [filter [drop] dip] if] if [drop] dip cons [drop] dip cons
-Stack: 1 -2 3 -4 [0 >] [] True [[drop] dip] 
-------------------------------
-M: if [drop] dip cons [drop] dip cons
-Stack: 1 -2 3 -4 [0 >] [] True [[drop] dip] [[dup] dip uncons [dup rolldown i rolldown swap] dip swap [filter cons] [filter [drop] dip] if] 
-------------------------------
-M: [drop] dip [drop] dip cons [drop] dip cons
-Stack: 1 -2 3 -4 [0 >] [] 
-------------------------------
-M: dip [drop] dip cons [drop] dip cons
-Stack: 1 -2 3 -4 [0 >] [] [drop] 
-------------------------------
-M: drop [] [drop] dip cons [drop] dip cons
-Stack: 1 -2 3 -4 [0 >] 
-------------------------------
-M: [] [drop] dip cons [drop] dip cons
-Stack: 1 -2 3 -4
-------------------------------
-M: [drop] dip cons [drop] dip cons
-Stack: 1 -2 3 -4 [] 
-------------------------------
-M: dip cons [drop] dip cons
-Stack: 1 -2 3 -4 [] [drop] 
-------------------------------
-M: drop [] cons [drop] dip cons
-Stack: 1 -2 3 -4
-------------------------------
-M: [] cons [drop] dip cons
-Stack: 1 -2 3
-------------------------------
-M: cons [drop] dip cons
-Stack: 1 -2 3 [] 
-------------------------------
-M: [drop] dip cons
-Stack: 1 -2 [3] 
-------------------------------
-M: dip cons
-Stack: 1 -2 [3] [drop] 
-------------------------------
-M: drop [3] cons
-Stack: 1 -2
-------------------------------
-M: [3] cons
-Stack: 1
-------------------------------
-M: cons
-Stack: 1 [3] 
+M: +
+Stack: 1 14
 ------------------------------
 M: 
-Stack: [1 3] 
+Stack: 15
 ------------------------------
-[[1, 3]]
+[15]

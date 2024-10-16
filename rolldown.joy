@@ -1,5 +1,0 @@
-[uncons dup first swap rest] def
-# 1 2 * 2 2 * 3 2 *
-#[map [uncons] dip rolldown swap dup rot i rot map]def [1 2 3] [2 *] map
-[is_empty_with_dip [dup null] dip swap] def
-[map is_empty_with_dip [drop drop][[uncons] dip rolldown swap dup rot i rot map] if]def [1 2 3 4] [2 *] map
