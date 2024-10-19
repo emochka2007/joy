@@ -3,10 +3,10 @@
 
 
 # 42 13 666 777 2 pick -> 42 13 666 777 13
+[filter dup null [[drop] dip][[dup] dip uncons [dup rolldown i rolldown swap] dip swap [filter cons][filter [drop] dip]if] if] def 
+[0 >][1 -2 3 -4] filter
 
-# [0 >] [1 2 -3] filter
-[filter is_empty_dip [][uncons rot dup rot swap dup rot i [][swap drop] if filter] if] def [0 >] [-1 2 -3] filter
 
-#[2 3] 1    [0 >]
-# [0 >] 1 [2 -3] 
-
+def filter(f,xs):
+    if xs==[]: retrn []   elis f(xs[0]): return [xs[0]]+filter(f,xs[1:])
+    else: return filter(f,xs[1:])

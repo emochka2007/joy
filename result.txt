@@ -1,214 +1,433 @@
-M: def [uncons dup first swap rest] def [filter is_empty_dip [] [uncons rot dup rot swap dup rot i [] [swap drop] if filter] if] def [0 >] [-1 2 -3] filter
+M: def [uncons dup first swap rest] def [filter dup null [[drop] dip] [[dup] dip uncons [dup rolldown i rolldown swap] dip swap [filter cons] [filter [drop] dip] if] if] def [0 >] [1 -2 3 -4] filter
 Stack: [is_empty_dip [dup null] dip swap] 
 ------------------------------
-M: [uncons dup first swap rest] def [filter is_empty_dip [] [uncons rot dup rot swap dup rot i [] [swap drop] if filter] if] def [0 >] [-1 2 -3] filter
+M: [uncons dup first swap rest] def [filter dup null [[drop] dip] [[dup] dip uncons [dup rolldown i rolldown swap] dip swap [filter cons] [filter [drop] dip] if] if] def [0 >] [1 -2 3 -4] filter
 Stack: 
 ------------------------------
-M: def [filter is_empty_dip [] [uncons rot dup rot swap dup rot i [] [swap drop] if filter] if] def [0 >] [-1 2 -3] filter
+M: def [filter dup null [[drop] dip] [[dup] dip uncons [dup rolldown i rolldown swap] dip swap [filter cons] [filter [drop] dip] if] if] def [0 >] [1 -2 3 -4] filter
 Stack: [uncons dup first swap rest] 
 ------------------------------
-M: [filter is_empty_dip [] [uncons rot dup rot swap dup rot i [] [swap drop] if filter] if] def [0 >] [-1 2 -3] filter
+M: [filter dup null [[drop] dip] [[dup] dip uncons [dup rolldown i rolldown swap] dip swap [filter cons] [filter [drop] dip] if] if] def [0 >] [1 -2 3 -4] filter
 Stack: 
 ------------------------------
-M: def [0 >] [-1 2 -3] filter
-Stack: [filter is_empty_dip [] [uncons rot dup rot swap dup rot i [] [swap drop] if filter] if] 
+M: def [0 >] [1 -2 3 -4] filter
+Stack: [filter dup null [[drop] dip] [[dup] dip uncons [dup rolldown i rolldown swap] dip swap [filter cons] [filter [drop] dip] if] if] 
 ------------------------------
-M: [0 >] [-1 2 -3] filter
+M: [0 >] [1 -2 3 -4] filter
 Stack: 
 ------------------------------
-M: [-1 2 -3] filter
+M: [1 -2 3 -4] filter
 Stack: [0 >] 
 ------------------------------
 M: filter
-Stack: [0 >] [-1 2 -3] 
+Stack: [0 >] [1 -2 3 -4] 
 ------------------------------
-M: is_empty_dip [] [uncons rot dup rot swap dup rot i [] [swap drop] if filter] if
-Stack: [0 >] [-1 2 -3] 
+M: dup null [[drop] dip] [[dup] dip uncons [dup rolldown i rolldown swap] dip swap [filter cons] [filter [drop] dip] if] if
+Stack: [0 >] [1 -2 3 -4] 
 ------------------------------
-M: [dup null] dip swap [] [uncons rot dup rot swap dup rot i [] [swap drop] if filter] if
-Stack: [0 >] [-1 2 -3] 
+M: null [[drop] dip] [[dup] dip uncons [dup rolldown i rolldown swap] dip swap [filter cons] [filter [drop] dip] if] if
+Stack: [0 >] [1 -2 3 -4] [1 -2 3 -4] 
 ------------------------------
-M: dip swap [] [uncons rot dup rot swap dup rot i [] [swap drop] if filter] if
-Stack: [0 >] [-1 2 -3] [dup null] 
+M: [[drop] dip] [[dup] dip uncons [dup rolldown i rolldown swap] dip swap [filter cons] [filter [drop] dip] if] if
+Stack: [0 >] [1 -2 3 -4] False
 ------------------------------
-M: dup null [-1 2 -3] swap [] [uncons rot dup rot swap dup rot i [] [swap drop] if filter] if
+M: [[dup] dip uncons [dup rolldown i rolldown swap] dip swap [filter cons] [filter [drop] dip] if] if
+Stack: [0 >] [1 -2 3 -4] False [[drop] dip] 
+------------------------------
+M: if
+Stack: [0 >] [1 -2 3 -4] False [[drop] dip] [[dup] dip uncons [dup rolldown i rolldown swap] dip swap [filter cons] [filter [drop] dip] if] 
+------------------------------
+M: [dup] dip uncons [dup rolldown i rolldown swap] dip swap [filter cons] [filter [drop] dip] if
+Stack: [0 >] [1 -2 3 -4] 
+------------------------------
+M: dip uncons [dup rolldown i rolldown swap] dip swap [filter cons] [filter [drop] dip] if
+Stack: [0 >] [1 -2 3 -4] [dup] 
+------------------------------
+M: dup [1 -2 3 -4] uncons [dup rolldown i rolldown swap] dip swap [filter cons] [filter [drop] dip] if
 Stack: [0 >] 
 ------------------------------
-M: null [-1 2 -3] swap [] [uncons rot dup rot swap dup rot i [] [swap drop] if filter] if
+M: [1 -2 3 -4] uncons [dup rolldown i rolldown swap] dip swap [filter cons] [filter [drop] dip] if
 Stack: [0 >] [0 >] 
 ------------------------------
-M: [-1 2 -3] swap [] [uncons rot dup rot swap dup rot i [] [swap drop] if filter] if
-Stack: [0 >] False
+M: uncons [dup rolldown i rolldown swap] dip swap [filter cons] [filter [drop] dip] if
+Stack: [0 >] [0 >] [1 -2 3 -4] 
 ------------------------------
-M: swap [] [uncons rot dup rot swap dup rot i [] [swap drop] if filter] if
-Stack: [0 >] False [-1 2 -3] 
+M: dup first swap rest [dup rolldown i rolldown swap] dip swap [filter cons] [filter [drop] dip] if
+Stack: [0 >] [0 >] [1 -2 3 -4] 
 ------------------------------
-M: [] [uncons rot dup rot swap dup rot i [] [swap drop] if filter] if
-Stack: [0 >] [-1 2 -3] False
+M: first swap rest [dup rolldown i rolldown swap] dip swap [filter cons] [filter [drop] dip] if
+Stack: [0 >] [0 >] [1 -2 3 -4] [1 -2 3 -4] 
 ------------------------------
-M: [uncons rot dup rot swap dup rot i [] [swap drop] if filter] if
-Stack: [0 >] [-1 2 -3] False [] 
+M: swap rest [dup rolldown i rolldown swap] dip swap [filter cons] [filter [drop] dip] if
+Stack: [0 >] [0 >] [1 -2 3 -4] 1
 ------------------------------
-M: if
-Stack: [0 >] [-1 2 -3] False [] [uncons rot dup rot swap dup rot i [] [swap drop] if filter] 
+M: rest [dup rolldown i rolldown swap] dip swap [filter cons] [filter [drop] dip] if
+Stack: [0 >] [0 >] 1 [1 -2 3 -4] 
 ------------------------------
-M: uncons rot dup rot swap dup rot i [] [swap drop] if filter
-Stack: [0 >] [-1 2 -3] 
+M: [dup rolldown i rolldown swap] dip swap [filter cons] [filter [drop] dip] if
+Stack: [0 >] [0 >] 1 [-2 3 -4] 
 ------------------------------
-M: dup first swap rest rot dup rot swap dup rot i [] [swap drop] if filter
-Stack: [0 >] [-1 2 -3] 
+M: dip swap [filter cons] [filter [drop] dip] if
+Stack: [0 >] [0 >] 1 [-2 3 -4] [dup rolldown i rolldown swap] 
 ------------------------------
-M: first swap rest rot dup rot swap dup rot i [] [swap drop] if filter
-Stack: [0 >] [-1 2 -3] [-1 2 -3] 
+M: dup rolldown i rolldown swap [-2 3 -4] swap [filter cons] [filter [drop] dip] if
+Stack: [0 >] [0 >] 1
 ------------------------------
-M: swap rest rot dup rot swap dup rot i [] [swap drop] if filter
-Stack: [0 >] [-1 2 -3] -1
+M: rolldown i rolldown swap [-2 3 -4] swap [filter cons] [filter [drop] dip] if
+Stack: [0 >] [0 >] 1 1
 ------------------------------
-M: rest rot dup rot swap dup rot i [] [swap drop] if filter
-Stack: [0 >] -1 [-1 2 -3] 
+M: i rolldown swap [-2 3 -4] swap [filter cons] [filter [drop] dip] if
+Stack: [0 >] 1 1 [0 >] 
 ------------------------------
-M: rot dup rot swap dup rot i [] [swap drop] if filter
-Stack: [0 >] -1 [2 -3] 
+M: 0 > rolldown swap [-2 3 -4] swap [filter cons] [filter [drop] dip] if
+Stack: [0 >] 1 1
 ------------------------------
-M: dup rot swap dup rot i [] [swap drop] if filter
-Stack: [2 -3] [0 >] -1
+M: > rolldown swap [-2 3 -4] swap [filter cons] [filter [drop] dip] if
+Stack: [0 >] 1 1 0
 ------------------------------
-M: rot swap dup rot i [] [swap drop] if filter
-Stack: [2 -3] [0 >] -1 -1
+M: rolldown swap [-2 3 -4] swap [filter cons] [filter [drop] dip] if
+Stack: [0 >] 1 True
 ------------------------------
-M: swap dup rot i [] [swap drop] if filter
-Stack: [2 -3] -1 [0 >] -1
+M: swap [-2 3 -4] swap [filter cons] [filter [drop] dip] if
+Stack: 1 True [0 >] 
 ------------------------------
-M: dup rot i [] [swap drop] if filter
-Stack: [2 -3] -1 -1 [0 >] 
+M: [-2 3 -4] swap [filter cons] [filter [drop] dip] if
+Stack: 1 [0 >] True
 ------------------------------
-M: rot i [] [swap drop] if filter
-Stack: [2 -3] -1 -1 [0 >] [0 >] 
+M: swap [filter cons] [filter [drop] dip] if
+Stack: 1 [0 >] True [-2 3 -4] 
 ------------------------------
-M: i [] [swap drop] if filter
-Stack: [2 -3] -1 [0 >] -1 [0 >] 
+M: [filter cons] [filter [drop] dip] if
+Stack: 1 [0 >] [-2 3 -4] True
 ------------------------------
-M: 0 > [] [swap drop] if filter
-Stack: [2 -3] -1 [0 >] -1
-------------------------------
-M: > [] [swap drop] if filter
-Stack: [2 -3] -1 [0 >] -1 0
-------------------------------
-M: [] [swap drop] if filter
-Stack: [2 -3] -1 [0 >] False
-------------------------------
-M: [swap drop] if filter
-Stack: [2 -3] -1 [0 >] False [] 
-------------------------------
-M: if filter
-Stack: [2 -3] -1 [0 >] False [] [swap drop] 
-------------------------------
-M: swap drop filter
-Stack: [2 -3] -1 [0 >] 
-------------------------------
-M: drop filter
-Stack: [2 -3] [0 >] -1
-------------------------------
-M: filter
-Stack: [2 -3] [0 >] 
-------------------------------
-M: is_empty_dip [] [uncons rot dup rot swap dup rot i [] [swap drop] if filter] if
-Stack: [2 -3] [0 >] 
-------------------------------
-M: [dup null] dip swap [] [uncons rot dup rot swap dup rot i [] [swap drop] if filter] if
-Stack: [2 -3] [0 >] 
-------------------------------
-M: dip swap [] [uncons rot dup rot swap dup rot i [] [swap drop] if filter] if
-Stack: [2 -3] [0 >] [dup null] 
-------------------------------
-M: dup null [0 >] swap [] [uncons rot dup rot swap dup rot i [] [swap drop] if filter] if
-Stack: [2 -3] 
-------------------------------
-M: null [0 >] swap [] [uncons rot dup rot swap dup rot i [] [swap drop] if filter] if
-Stack: [2 -3] [2 -3] 
-------------------------------
-M: [0 >] swap [] [uncons rot dup rot swap dup rot i [] [swap drop] if filter] if
-Stack: [2 -3] False
-------------------------------
-M: swap [] [uncons rot dup rot swap dup rot i [] [swap drop] if filter] if
-Stack: [2 -3] False [0 >] 
-------------------------------
-M: [] [uncons rot dup rot swap dup rot i [] [swap drop] if filter] if
-Stack: [2 -3] [0 >] False
-------------------------------
-M: [uncons rot dup rot swap dup rot i [] [swap drop] if filter] if
-Stack: [2 -3] [0 >] False [] 
+M: [filter [drop] dip] if
+Stack: 1 [0 >] [-2 3 -4] True [filter cons] 
 ------------------------------
 M: if
-Stack: [2 -3] [0 >] False [] [uncons rot dup rot swap dup rot i [] [swap drop] if filter] 
+Stack: 1 [0 >] [-2 3 -4] True [filter cons] [filter [drop] dip] 
 ------------------------------
-M: uncons rot dup rot swap dup rot i [] [swap drop] if filter
-Stack: [2 -3] [0 >] 
+M: filter cons
+Stack: 1 [0 >] [-2 3 -4] 
 ------------------------------
-M: dup first swap rest rot dup rot swap dup rot i [] [swap drop] if filter
-Stack: [2 -3] [0 >] 
+M: dup null [[drop] dip] [[dup] dip uncons [dup rolldown i rolldown swap] dip swap [filter cons] [filter [drop] dip] if] if cons
+Stack: 1 [0 >] [-2 3 -4] 
 ------------------------------
-M: first swap rest rot dup rot swap dup rot i [] [swap drop] if filter
-Stack: [2 -3] [0 >] [0 >] 
+M: null [[drop] dip] [[dup] dip uncons [dup rolldown i rolldown swap] dip swap [filter cons] [filter [drop] dip] if] if cons
+Stack: 1 [0 >] [-2 3 -4] [-2 3 -4] 
 ------------------------------
-M: swap rest rot dup rot swap dup rot i [] [swap drop] if filter
-Stack: [2 -3] [0 >] 0
+M: [[drop] dip] [[dup] dip uncons [dup rolldown i rolldown swap] dip swap [filter cons] [filter [drop] dip] if] if cons
+Stack: 1 [0 >] [-2 3 -4] False
 ------------------------------
-M: rest rot dup rot swap dup rot i [] [swap drop] if filter
-Stack: [2 -3] 0 [0 >] 
+M: [[dup] dip uncons [dup rolldown i rolldown swap] dip swap [filter cons] [filter [drop] dip] if] if cons
+Stack: 1 [0 >] [-2 3 -4] False [[drop] dip] 
 ------------------------------
-M: rot dup rot swap dup rot i [] [swap drop] if filter
-Stack: [2 -3] 0 [>] 
+M: if cons
+Stack: 1 [0 >] [-2 3 -4] False [[drop] dip] [[dup] dip uncons [dup rolldown i rolldown swap] dip swap [filter cons] [filter [drop] dip] if] 
 ------------------------------
-M: dup rot swap dup rot i [] [swap drop] if filter
-Stack: [>] [2 -3] 0
+M: [dup] dip uncons [dup rolldown i rolldown swap] dip swap [filter cons] [filter [drop] dip] if cons
+Stack: 1 [0 >] [-2 3 -4] 
 ------------------------------
-M: rot swap dup rot i [] [swap drop] if filter
-Stack: [>] [2 -3] 0 0
+M: dip uncons [dup rolldown i rolldown swap] dip swap [filter cons] [filter [drop] dip] if cons
+Stack: 1 [0 >] [-2 3 -4] [dup] 
 ------------------------------
-M: swap dup rot i [] [swap drop] if filter
-Stack: [>] 0 [2 -3] 0
+M: dup [-2 3 -4] uncons [dup rolldown i rolldown swap] dip swap [filter cons] [filter [drop] dip] if cons
+Stack: 1 [0 >] 
 ------------------------------
-M: dup rot i [] [swap drop] if filter
-Stack: [>] 0 0 [2 -3] 
+M: [-2 3 -4] uncons [dup rolldown i rolldown swap] dip swap [filter cons] [filter [drop] dip] if cons
+Stack: 1 [0 >] [0 >] 
 ------------------------------
-M: rot i [] [swap drop] if filter
-Stack: [>] 0 0 [2 -3] [2 -3] 
+M: uncons [dup rolldown i rolldown swap] dip swap [filter cons] [filter [drop] dip] if cons
+Stack: 1 [0 >] [0 >] [-2 3 -4] 
 ------------------------------
-M: i [] [swap drop] if filter
-Stack: [>] 0 [2 -3] 0 [2 -3] 
+M: dup first swap rest [dup rolldown i rolldown swap] dip swap [filter cons] [filter [drop] dip] if cons
+Stack: 1 [0 >] [0 >] [-2 3 -4] 
 ------------------------------
-M: 2 -3 [] [swap drop] if filter
-Stack: [>] 0 [2 -3] 0
+M: first swap rest [dup rolldown i rolldown swap] dip swap [filter cons] [filter [drop] dip] if cons
+Stack: 1 [0 >] [0 >] [-2 3 -4] [-2 3 -4] 
 ------------------------------
-M: -3 [] [swap drop] if filter
-Stack: [>] 0 [2 -3] 0 2
+M: swap rest [dup rolldown i rolldown swap] dip swap [filter cons] [filter [drop] dip] if cons
+Stack: 1 [0 >] [0 >] [-2 3 -4] -2
 ------------------------------
-M: [] [swap drop] if filter
-Stack: [>] 0 [2 -3] 0 2 -3
+M: rest [dup rolldown i rolldown swap] dip swap [filter cons] [filter [drop] dip] if cons
+Stack: 1 [0 >] [0 >] -2 [-2 3 -4] 
 ------------------------------
-M: [swap drop] if filter
-Stack: [>] 0 [2 -3] 0 2 -3 [] 
+M: [dup rolldown i rolldown swap] dip swap [filter cons] [filter [drop] dip] if cons
+Stack: 1 [0 >] [0 >] -2 [3 -4] 
 ------------------------------
-M: if filter
-Stack: [>] 0 [2 -3] 0 2 -3 [] [swap drop] 
+M: dip swap [filter cons] [filter [drop] dip] if cons
+Stack: 1 [0 >] [0 >] -2 [3 -4] [dup rolldown i rolldown swap] 
 ------------------------------
-M: filter
-Stack: [>] 0 [2 -3] 0 2
+M: dup rolldown i rolldown swap [3 -4] swap [filter cons] [filter [drop] dip] if cons
+Stack: 1 [0 >] [0 >] -2
 ------------------------------
-M: is_empty_dip [] [uncons rot dup rot swap dup rot i [] [swap drop] if filter] if
-Stack: [>] 0 [2 -3] 0 2
+M: rolldown i rolldown swap [3 -4] swap [filter cons] [filter [drop] dip] if cons
+Stack: 1 [0 >] [0 >] -2 -2
 ------------------------------
-M: [dup null] dip swap [] [uncons rot dup rot swap dup rot i [] [swap drop] if filter] if
-Stack: [>] 0 [2 -3] 0 2
+M: i rolldown swap [3 -4] swap [filter cons] [filter [drop] dip] if cons
+Stack: 1 [0 >] -2 -2 [0 >] 
 ------------------------------
-M: dip swap [] [uncons rot dup rot swap dup rot i [] [swap drop] if filter] if
-Stack: [>] 0 [2 -3] 0 2 [dup null] 
+M: 0 > rolldown swap [3 -4] swap [filter cons] [filter [drop] dip] if cons
+Stack: 1 [0 >] -2 -2
 ------------------------------
-M: dup null 2 swap [] [uncons rot dup rot swap dup rot i [] [swap drop] if filter] if
-Stack: [>] 0 [2 -3] 0
+M: > rolldown swap [3 -4] swap [filter cons] [filter [drop] dip] if cons
+Stack: 1 [0 >] -2 -2 0
 ------------------------------
-M: null 2 swap [] [uncons rot dup rot swap dup rot i [] [swap drop] if filter] if
-Stack: [>] 0 [2 -3] 0 0
+M: rolldown swap [3 -4] swap [filter cons] [filter [drop] dip] if cons
+Stack: 1 [0 >] -2 False
 ------------------------------
-Incorrect type on stack, expected <class 'list'>, received <class 'int'>
+M: swap [3 -4] swap [filter cons] [filter [drop] dip] if cons
+Stack: 1 -2 False [0 >] 
+------------------------------
+M: [3 -4] swap [filter cons] [filter [drop] dip] if cons
+Stack: 1 -2 [0 >] False
+------------------------------
+M: swap [filter cons] [filter [drop] dip] if cons
+Stack: 1 -2 [0 >] False [3 -4] 
+------------------------------
+M: [filter cons] [filter [drop] dip] if cons
+Stack: 1 -2 [0 >] [3 -4] False
+------------------------------
+M: [filter [drop] dip] if cons
+Stack: 1 -2 [0 >] [3 -4] False [filter cons] 
+------------------------------
+M: if cons
+Stack: 1 -2 [0 >] [3 -4] False [filter cons] [filter [drop] dip] 
+------------------------------
+M: filter [drop] dip cons
+Stack: 1 -2 [0 >] [3 -4] 
+------------------------------
+M: dup null [[drop] dip] [[dup] dip uncons [dup rolldown i rolldown swap] dip swap [filter cons] [filter [drop] dip] if] if [drop] dip cons
+Stack: 1 -2 [0 >] [3 -4] 
+------------------------------
+M: null [[drop] dip] [[dup] dip uncons [dup rolldown i rolldown swap] dip swap [filter cons] [filter [drop] dip] if] if [drop] dip cons
+Stack: 1 -2 [0 >] [3 -4] [3 -4] 
+------------------------------
+M: [[drop] dip] [[dup] dip uncons [dup rolldown i rolldown swap] dip swap [filter cons] [filter [drop] dip] if] if [drop] dip cons
+Stack: 1 -2 [0 >] [3 -4] False
+------------------------------
+M: [[dup] dip uncons [dup rolldown i rolldown swap] dip swap [filter cons] [filter [drop] dip] if] if [drop] dip cons
+Stack: 1 -2 [0 >] [3 -4] False [[drop] dip] 
+------------------------------
+M: if [drop] dip cons
+Stack: 1 -2 [0 >] [3 -4] False [[drop] dip] [[dup] dip uncons [dup rolldown i rolldown swap] dip swap [filter cons] [filter [drop] dip] if] 
+------------------------------
+M: [dup] dip uncons [dup rolldown i rolldown swap] dip swap [filter cons] [filter [drop] dip] if [drop] dip cons
+Stack: 1 -2 [0 >] [3 -4] 
+------------------------------
+M: dip uncons [dup rolldown i rolldown swap] dip swap [filter cons] [filter [drop] dip] if [drop] dip cons
+Stack: 1 -2 [0 >] [3 -4] [dup] 
+------------------------------
+M: dup [3 -4] uncons [dup rolldown i rolldown swap] dip swap [filter cons] [filter [drop] dip] if [drop] dip cons
+Stack: 1 -2 [0 >] 
+------------------------------
+M: [3 -4] uncons [dup rolldown i rolldown swap] dip swap [filter cons] [filter [drop] dip] if [drop] dip cons
+Stack: 1 -2 [0 >] [0 >] 
+------------------------------
+M: uncons [dup rolldown i rolldown swap] dip swap [filter cons] [filter [drop] dip] if [drop] dip cons
+Stack: 1 -2 [0 >] [0 >] [3 -4] 
+------------------------------
+M: dup first swap rest [dup rolldown i rolldown swap] dip swap [filter cons] [filter [drop] dip] if [drop] dip cons
+Stack: 1 -2 [0 >] [0 >] [3 -4] 
+------------------------------
+M: first swap rest [dup rolldown i rolldown swap] dip swap [filter cons] [filter [drop] dip] if [drop] dip cons
+Stack: 1 -2 [0 >] [0 >] [3 -4] [3 -4] 
+------------------------------
+M: swap rest [dup rolldown i rolldown swap] dip swap [filter cons] [filter [drop] dip] if [drop] dip cons
+Stack: 1 -2 [0 >] [0 >] [3 -4] 3
+------------------------------
+M: rest [dup rolldown i rolldown swap] dip swap [filter cons] [filter [drop] dip] if [drop] dip cons
+Stack: 1 -2 [0 >] [0 >] 3 [3 -4] 
+------------------------------
+M: [dup rolldown i rolldown swap] dip swap [filter cons] [filter [drop] dip] if [drop] dip cons
+Stack: 1 -2 [0 >] [0 >] 3 [-4] 
+------------------------------
+M: dip swap [filter cons] [filter [drop] dip] if [drop] dip cons
+Stack: 1 -2 [0 >] [0 >] 3 [-4] [dup rolldown i rolldown swap] 
+------------------------------
+M: dup rolldown i rolldown swap [-4] swap [filter cons] [filter [drop] dip] if [drop] dip cons
+Stack: 1 -2 [0 >] [0 >] 3
+------------------------------
+M: rolldown i rolldown swap [-4] swap [filter cons] [filter [drop] dip] if [drop] dip cons
+Stack: 1 -2 [0 >] [0 >] 3 3
+------------------------------
+M: i rolldown swap [-4] swap [filter cons] [filter [drop] dip] if [drop] dip cons
+Stack: 1 -2 [0 >] 3 3 [0 >] 
+------------------------------
+M: 0 > rolldown swap [-4] swap [filter cons] [filter [drop] dip] if [drop] dip cons
+Stack: 1 -2 [0 >] 3 3
+------------------------------
+M: > rolldown swap [-4] swap [filter cons] [filter [drop] dip] if [drop] dip cons
+Stack: 1 -2 [0 >] 3 3 0
+------------------------------
+M: rolldown swap [-4] swap [filter cons] [filter [drop] dip] if [drop] dip cons
+Stack: 1 -2 [0 >] 3 True
+------------------------------
+M: swap [-4] swap [filter cons] [filter [drop] dip] if [drop] dip cons
+Stack: 1 -2 3 True [0 >] 
+------------------------------
+M: [-4] swap [filter cons] [filter [drop] dip] if [drop] dip cons
+Stack: 1 -2 3 [0 >] True
+------------------------------
+M: swap [filter cons] [filter [drop] dip] if [drop] dip cons
+Stack: 1 -2 3 [0 >] True [-4] 
+------------------------------
+M: [filter cons] [filter [drop] dip] if [drop] dip cons
+Stack: 1 -2 3 [0 >] [-4] True
+------------------------------
+M: [filter [drop] dip] if [drop] dip cons
+Stack: 1 -2 3 [0 >] [-4] True [filter cons] 
+------------------------------
+M: if [drop] dip cons
+Stack: 1 -2 3 [0 >] [-4] True [filter cons] [filter [drop] dip] 
+------------------------------
+M: filter cons [drop] dip cons
+Stack: 1 -2 3 [0 >] [-4] 
+------------------------------
+M: dup null [[drop] dip] [[dup] dip uncons [dup rolldown i rolldown swap] dip swap [filter cons] [filter [drop] dip] if] if cons [drop] dip cons
+Stack: 1 -2 3 [0 >] [-4] 
+------------------------------
+M: null [[drop] dip] [[dup] dip uncons [dup rolldown i rolldown swap] dip swap [filter cons] [filter [drop] dip] if] if cons [drop] dip cons
+Stack: 1 -2 3 [0 >] [-4] [-4] 
+------------------------------
+M: [[drop] dip] [[dup] dip uncons [dup rolldown i rolldown swap] dip swap [filter cons] [filter [drop] dip] if] if cons [drop] dip cons
+Stack: 1 -2 3 [0 >] [-4] False
+------------------------------
+M: [[dup] dip uncons [dup rolldown i rolldown swap] dip swap [filter cons] [filter [drop] dip] if] if cons [drop] dip cons
+Stack: 1 -2 3 [0 >] [-4] False [[drop] dip] 
+------------------------------
+M: if cons [drop] dip cons
+Stack: 1 -2 3 [0 >] [-4] False [[drop] dip] [[dup] dip uncons [dup rolldown i rolldown swap] dip swap [filter cons] [filter [drop] dip] if] 
+------------------------------
+M: [dup] dip uncons [dup rolldown i rolldown swap] dip swap [filter cons] [filter [drop] dip] if cons [drop] dip cons
+Stack: 1 -2 3 [0 >] [-4] 
+------------------------------
+M: dip uncons [dup rolldown i rolldown swap] dip swap [filter cons] [filter [drop] dip] if cons [drop] dip cons
+Stack: 1 -2 3 [0 >] [-4] [dup] 
+------------------------------
+M: dup [-4] uncons [dup rolldown i rolldown swap] dip swap [filter cons] [filter [drop] dip] if cons [drop] dip cons
+Stack: 1 -2 3 [0 >] 
+------------------------------
+M: [-4] uncons [dup rolldown i rolldown swap] dip swap [filter cons] [filter [drop] dip] if cons [drop] dip cons
+Stack: 1 -2 3 [0 >] [0 >] 
+------------------------------
+M: uncons [dup rolldown i rolldown swap] dip swap [filter cons] [filter [drop] dip] if cons [drop] dip cons
+Stack: 1 -2 3 [0 >] [0 >] [-4] 
+------------------------------
+M: dup first swap rest [dup rolldown i rolldown swap] dip swap [filter cons] [filter [drop] dip] if cons [drop] dip cons
+Stack: 1 -2 3 [0 >] [0 >] [-4] 
+------------------------------
+M: first swap rest [dup rolldown i rolldown swap] dip swap [filter cons] [filter [drop] dip] if cons [drop] dip cons
+Stack: 1 -2 3 [0 >] [0 >] [-4] [-4] 
+------------------------------
+M: swap rest [dup rolldown i rolldown swap] dip swap [filter cons] [filter [drop] dip] if cons [drop] dip cons
+Stack: 1 -2 3 [0 >] [0 >] [-4] -4
+------------------------------
+M: rest [dup rolldown i rolldown swap] dip swap [filter cons] [filter [drop] dip] if cons [drop] dip cons
+Stack: 1 -2 3 [0 >] [0 >] -4 [-4] 
+------------------------------
+M: [dup rolldown i rolldown swap] dip swap [filter cons] [filter [drop] dip] if cons [drop] dip cons
+Stack: 1 -2 3 [0 >] [0 >] -4 [] 
+------------------------------
+M: dip swap [filter cons] [filter [drop] dip] if cons [drop] dip cons
+Stack: 1 -2 3 [0 >] [0 >] -4 [] [dup rolldown i rolldown swap] 
+------------------------------
+M: dup rolldown i rolldown swap [] swap [filter cons] [filter [drop] dip] if cons [drop] dip cons
+Stack: 1 -2 3 [0 >] [0 >] -4
+------------------------------
+M: rolldown i rolldown swap [] swap [filter cons] [filter [drop] dip] if cons [drop] dip cons
+Stack: 1 -2 3 [0 >] [0 >] -4 -4
+------------------------------
+M: i rolldown swap [] swap [filter cons] [filter [drop] dip] if cons [drop] dip cons
+Stack: 1 -2 3 [0 >] -4 -4 [0 >] 
+------------------------------
+M: 0 > rolldown swap [] swap [filter cons] [filter [drop] dip] if cons [drop] dip cons
+Stack: 1 -2 3 [0 >] -4 -4
+------------------------------
+M: > rolldown swap [] swap [filter cons] [filter [drop] dip] if cons [drop] dip cons
+Stack: 1 -2 3 [0 >] -4 -4 0
+------------------------------
+M: rolldown swap [] swap [filter cons] [filter [drop] dip] if cons [drop] dip cons
+Stack: 1 -2 3 [0 >] -4 False
+------------------------------
+M: swap [] swap [filter cons] [filter [drop] dip] if cons [drop] dip cons
+Stack: 1 -2 3 -4 False [0 >] 
+------------------------------
+M: [] swap [filter cons] [filter [drop] dip] if cons [drop] dip cons
+Stack: 1 -2 3 -4 [0 >] False
+------------------------------
+M: swap [filter cons] [filter [drop] dip] if cons [drop] dip cons
+Stack: 1 -2 3 -4 [0 >] False [] 
+------------------------------
+M: [filter cons] [filter [drop] dip] if cons [drop] dip cons
+Stack: 1 -2 3 -4 [0 >] [] False
+------------------------------
+M: [filter [drop] dip] if cons [drop] dip cons
+Stack: 1 -2 3 -4 [0 >] [] False [filter cons] 
+------------------------------
+M: if cons [drop] dip cons
+Stack: 1 -2 3 -4 [0 >] [] False [filter cons] [filter [drop] dip] 
+------------------------------
+M: filter [drop] dip cons [drop] dip cons
+Stack: 1 -2 3 -4 [0 >] [] 
+------------------------------
+M: dup null [[drop] dip] [[dup] dip uncons [dup rolldown i rolldown swap] dip swap [filter cons] [filter [drop] dip] if] if [drop] dip cons [drop] dip cons
+Stack: 1 -2 3 -4 [0 >] [] 
+------------------------------
+M: null [[drop] dip] [[dup] dip uncons [dup rolldown i rolldown swap] dip swap [filter cons] [filter [drop] dip] if] if [drop] dip cons [drop] dip cons
+Stack: 1 -2 3 -4 [0 >] [] [] 
+------------------------------
+M: [[drop] dip] [[dup] dip uncons [dup rolldown i rolldown swap] dip swap [filter cons] [filter [drop] dip] if] if [drop] dip cons [drop] dip cons
+Stack: 1 -2 3 -4 [0 >] [] True
+------------------------------
+M: [[dup] dip uncons [dup rolldown i rolldown swap] dip swap [filter cons] [filter [drop] dip] if] if [drop] dip cons [drop] dip cons
+Stack: 1 -2 3 -4 [0 >] [] True [[drop] dip] 
+------------------------------
+M: if [drop] dip cons [drop] dip cons
+Stack: 1 -2 3 -4 [0 >] [] True [[drop] dip] [[dup] dip uncons [dup rolldown i rolldown swap] dip swap [filter cons] [filter [drop] dip] if] 
+------------------------------
+M: [drop] dip [drop] dip cons [drop] dip cons
+Stack: 1 -2 3 -4 [0 >] [] 
+------------------------------
+M: dip [drop] dip cons [drop] dip cons
+Stack: 1 -2 3 -4 [0 >] [] [drop] 
+------------------------------
+M: drop [] [drop] dip cons [drop] dip cons
+Stack: 1 -2 3 -4 [0 >] 
+------------------------------
+M: [] [drop] dip cons [drop] dip cons
+Stack: 1 -2 3 -4
+------------------------------
+M: [drop] dip cons [drop] dip cons
+Stack: 1 -2 3 -4 [] 
+------------------------------
+M: dip cons [drop] dip cons
+Stack: 1 -2 3 -4 [] [drop] 
+------------------------------
+M: drop [] cons [drop] dip cons
+Stack: 1 -2 3 -4
+------------------------------
+M: [] cons [drop] dip cons
+Stack: 1 -2 3
+------------------------------
+M: cons [drop] dip cons
+Stack: 1 -2 3 [] 
+------------------------------
+M: [drop] dip cons
+Stack: 1 -2 [3] 
+------------------------------
+M: dip cons
+Stack: 1 -2 [3] [drop] 
+------------------------------
+M: drop [3] cons
+Stack: 1 -2
+------------------------------
+M: [3] cons
+Stack: 1
+------------------------------
+M: cons
+Stack: 1 [3] 
+------------------------------
+M: 
+Stack: [1 3] 
+------------------------------
+[[1, 3]]
